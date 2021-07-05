@@ -1,0 +1,62 @@
+﻿<!-- HEADER START -->
+<header>
+    <div id="header-sticky" class="header-area transparent-header font-color pt-10 pb-10">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-xl-2 col-lg-2 col-md-4 col-10 d-flex align-items-center">
+                    <div class="logo">
+                        <a href="/"> <img src="/assets/img/logo/logo.png" class="logo-w-50" alt=""> </a>
+                    </div>
+                </div>
+                <div class="col-xl-10 col-lg-10 col-md-7 col-8 d-none d-md-block whitebg">
+                    <div class="header-btn f-right d-none d-sm-none d-md-block">
+                        <a href="#" class="btn"><i class="fal fa-lock-alt"></i>Sign In</a>
+                    </div>
+                    <div class="main-menu colormenu d-block">
+                        <nav id="mobile-menu">
+                            <ul>
+                                <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                                <li>@Html.ActionLink("Blog", "Blog", "Home")</li>
+                                <li>@Html.ActionLink("Pricing", "Price", "Home")</li>
+                                <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+                <div class="col-2 col-md-1">
+                    <div class="side-menu-icon d-lg-none text-end ">
+                        <button class="side-toggle"><i class="far fa-bars text-white"></i></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+<!-- HEADER END -->
+<div class="fix">
+    <div class="side-info">
+        <button class="side-info-close"><i class="fal fa-times"></i></button>
+        <div class="side-info-content">
+            <div class="mobile-menu"></div>
+        </div>
+    </div>
+</div>
+<div class="offcanvas-overlay"></div>
+<!-- page title start  -->
+<section class="page__title  fix text-center">
+    <div class="slider__shape">
+        <img class="shape triangle" src="/assets/img/aboutpage/topElips.png" alt="topshape">
+        <img class="shape dotted-square" src="/assets/img/aboutpage/rightElips.png" alt="rightshape">
+        <img class="shape solid-square" src="/assets/img/aboutpage/circleElips.png" alt="solid-square">
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-12">
+                <div class="page__title-content pt-150">
+                    <h2 class="page_title">@ViewBag.Title</h2>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- page title end  -->

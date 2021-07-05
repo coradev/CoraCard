@@ -11130,4 +11130,8 @@ div.page__title-content h2 {
   transition: all 0.3s linear 0s;
 }
 
+.logo-w-50{
+  width: 50px;
+}
+
 /*# sourceMappingURL=style.css.map */
