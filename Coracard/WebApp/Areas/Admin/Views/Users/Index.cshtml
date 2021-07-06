@@ -1,0 +1,53 @@
+﻿@model IEnumerable<DataAccessLibrary.DataControl.User>
+
+@{
+    ViewBag.Title = "User Management";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutPage.cshtml";
+}
+<table class="table">
+    <tr>
+
+        <th>
+            @Html.DisplayNameFor(model => model.USERNAME)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EMAIL)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FULLNAME)
+        </th>
+        <th>
+            @Html.DisplayName("STATUS")
+            @*@Html.DisplayNameFor(model => model.Status.NAME)*@
+        </th>
+        <th>
+            @Html.DisplayName("ACTION")
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.USERNAME)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EMAIL)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FULLNAME)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Status.NAME)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.USERID }) |
+                @Html.ActionLink("Details", "Details", new { id = item.USERID }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.USERID })
+            </td>
+        </tr>
+    }
+
+</table>
+@Html.ActionLink("Create New", "Create", "Users", new { @class = "btn btn-success mb-2" })

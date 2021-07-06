@@ -36,7 +36,17 @@ namespace WebApp
                         ));
             //css profile
             bundles.Add(new StyleBundle("~/assets/profile").Include(
-            "~/assets/css/profile/*.css"));
+                        "~/assets/css/profile/*.css"
+                        ));
+
+
+            //Admin page
+            bundles.Add(new ScriptBundle("~/assets/js/admin").Include(
+                        "~/assets/admin/js/*.js"
+                        ));
+            bundles.Add(new StyleBundle("~/assets/css/admin").Include(
+                        "~/assets/admin/css/*.css"
+                        ));
 
         }
     }
