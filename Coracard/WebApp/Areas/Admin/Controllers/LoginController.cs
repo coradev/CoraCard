@@ -22,7 +22,7 @@ namespace WebApp.Areas.Admin.Controllers
             if (ModelState.IsValid)
             {
                 var um = new UserModel();
-                var result = um.Login(model.UserName, Encryptor.MD5Hash(model.Password));
+                var result = um.Login(model.UserName, model.Password);
                 if (result == 1)
                 {
                     var user = um.GetByUserName(model.UserName);

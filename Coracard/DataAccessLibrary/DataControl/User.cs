@@ -27,7 +27,7 @@ namespace DataAccessLibrary.DataControl
         [Required]
         [StringLength(500)]
         public string PASSWORD { get; set; }
-
+        
         [Required]
         [StringLength(100)]
         public string EMAIL { get; set; }

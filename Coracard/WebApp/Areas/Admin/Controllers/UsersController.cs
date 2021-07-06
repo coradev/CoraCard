@@ -11,7 +11,7 @@ using WebApp.Common;
 
 namespace WebApp.Areas.Admin.Controllers
 {
-    public class UsersController : BaseController
+    public class UsersController : Controller
     {
         private DataModelDbContext db = new DataModelDbContext();
 
@@ -53,9 +53,6 @@ namespace WebApp.Areas.Admin.Controllers
         {
             if (ModelState.IsValid)
             {
-                var encryptedMd5Password = Encryptor.MD5Hash(user.PASSWORD);
-                user.PASSWORD = encryptedMd5Password;
-
                 db.Users.Add(user);
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -91,9 +88,6 @@ namespace WebApp.Areas.Admin.Controllers
             if (ModelState.IsValid)
             {
                 db.Entry(user).State = EntityState.Modified;
-                var encryptedMd5Password = Encryptor.MD5Hash(user.PASSWORD);
-                user.PASSWORD = encryptedMd5Password;
-
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
