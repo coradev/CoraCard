@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using DataAccessLibrary.DataControl;
+using WebApp.Common;
 
 namespace WebApp.Areas.Admin.Controllers
 {
@@ -52,6 +53,9 @@ namespace WebApp.Areas.Admin.Controllers
         {
             if (ModelState.IsValid)
             {
+                var encryptedMd5Password = Encryptor.MD5Hash(user.PASSWORD);
+                user.PASSWORD = encryptedMd5Password;
+
                 db.Users.Add(user);
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -87,6 +91,9 @@ namespace WebApp.Areas.Admin.Controllers
             if (ModelState.IsValid)
             {
                 db.Entry(user).State = EntityState.Modified;
+                var encryptedMd5Password = Encryptor.MD5Hash(user.PASSWORD);
+                user.PASSWORD = encryptedMd5Password;
+
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }

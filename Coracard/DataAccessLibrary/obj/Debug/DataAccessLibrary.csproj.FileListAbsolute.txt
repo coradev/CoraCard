@@ -9,3 +9,4 @@ C:\Users\admin\Desktop\CoraCard\Coracard\DataAccessLibrary\obj\Debug\DataAccessL
 C:\Users\admin\Desktop\CoraCard\Coracard\DataAccessLibrary\obj\Debug\DataAccessLibrary.csproj.CopyComplete
 C:\Users\admin\Desktop\CoraCard\Coracard\DataAccessLibrary\obj\Debug\DataAccessLibrary.dll
 C:\Users\admin\Desktop\CoraCard\Coracard\DataAccessLibrary\obj\Debug\DataAccessLibrary.pdb
+C:\Users\admin\Desktop\CoraCard\Coracard\DataAccessLibrary\obj\Debug\DataAccessLibrary.csproj.AssemblyReference.cache
