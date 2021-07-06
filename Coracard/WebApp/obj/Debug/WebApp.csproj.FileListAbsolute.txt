@@ -51,6 +51,9 @@ C:\Users\admin\Desktop\CoraCard\Coracard\WebApp\bin\roslyn\vbc.rsp
 C:\Users\admin\Desktop\CoraCard\Coracard\WebApp\bin\roslyn\VBCSCompiler.exe
 C:\Users\admin\Desktop\CoraCard\Coracard\WebApp\bin\roslyn\VBCSCompiler.exe.config
 C:\Users\admin\Desktop\CoraCard\Coracard\WebApp\bin\Antlr3.Runtime.dll
+C:\Users\admin\Desktop\CoraCard\Coracard\WebApp\bin\DataAccessLibrary.dll
+C:\Users\admin\Desktop\CoraCard\Coracard\WebApp\bin\EntityFramework.dll
+C:\Users\admin\Desktop\CoraCard\Coracard\WebApp\bin\EntityFramework.SqlServer.dll
 C:\Users\admin\Desktop\CoraCard\Coracard\WebApp\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
 C:\Users\admin\Desktop\CoraCard\Coracard\WebApp\bin\Microsoft.Web.Infrastructure.dll
 C:\Users\admin\Desktop\CoraCard\Coracard\WebApp\bin\Newtonsoft.Json.dll
@@ -62,6 +65,10 @@ C:\Users\admin\Desktop\CoraCard\Coracard\WebApp\bin\System.Web.WebPages.Deployme
 C:\Users\admin\Desktop\CoraCard\Coracard\WebApp\bin\System.Web.WebPages.dll
 C:\Users\admin\Desktop\CoraCard\Coracard\WebApp\bin\System.Web.WebPages.Razor.dll
 C:\Users\admin\Desktop\CoraCard\Coracard\WebApp\bin\WebGrease.dll
+C:\Users\admin\Desktop\CoraCard\Coracard\WebApp\bin\DataAccessLibrary.pdb
+C:\Users\admin\Desktop\CoraCard\Coracard\WebApp\bin\DataAccessLibrary.dll.config
+C:\Users\admin\Desktop\CoraCard\Coracard\WebApp\bin\EntityFramework.xml
+C:\Users\admin\Desktop\CoraCard\Coracard\WebApp\bin\EntityFramework.SqlServer.xml
 C:\Users\admin\Desktop\CoraCard\Coracard\WebApp\bin\System.Web.Helpers.xml
 C:\Users\admin\Desktop\CoraCard\Coracard\WebApp\bin\System.Web.Mvc.xml
 C:\Users\admin\Desktop\CoraCard\Coracard\WebApp\bin\System.Web.Optimization.xml

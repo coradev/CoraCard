@@ -1,0 +1,11 @@
+C:\Users\admin\Desktop\CoraCard\Coracard\DataAccessLibrary\bin\Debug\DataAccessLibrary.dll.config
+C:\Users\admin\Desktop\CoraCard\Coracard\DataAccessLibrary\bin\Debug\DataAccessLibrary.dll
+C:\Users\admin\Desktop\CoraCard\Coracard\DataAccessLibrary\bin\Debug\DataAccessLibrary.pdb
+C:\Users\admin\Desktop\CoraCard\Coracard\DataAccessLibrary\bin\Debug\EntityFramework.dll
+C:\Users\admin\Desktop\CoraCard\Coracard\DataAccessLibrary\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\admin\Desktop\CoraCard\Coracard\DataAccessLibrary\bin\Debug\EntityFramework.xml
+C:\Users\admin\Desktop\CoraCard\Coracard\DataAccessLibrary\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\admin\Desktop\CoraCard\Coracard\DataAccessLibrary\obj\Debug\DataAccessLibrary.csproj.CoreCompileInputs.cache
+C:\Users\admin\Desktop\CoraCard\Coracard\DataAccessLibrary\obj\Debug\DataAccessLibrary.csproj.CopyComplete
+C:\Users\admin\Desktop\CoraCard\Coracard\DataAccessLibrary\obj\Debug\DataAccessLibrary.dll
+C:\Users\admin\Desktop\CoraCard\Coracard\DataAccessLibrary\obj\Debug\DataAccessLibrary.pdb
