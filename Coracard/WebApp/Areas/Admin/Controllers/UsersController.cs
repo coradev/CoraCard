@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Data.Entity;
+﻿using System.Data.Entity;
 using System.Linq;
 using System.Net;
-using System.Web;
 using System.Web.Mvc;
 using DataAccessLibrary.DataControl;
+using DataAccessLibrary.DataModel;
 using WebApp.Common;
 
 namespace WebApp.Areas.Admin.Controllers
@@ -53,6 +50,9 @@ namespace WebApp.Areas.Admin.Controllers
         {
             if (ModelState.IsValid)
             {
+                var encryptedMd5Password = Encryptor.MD5Hash(user.PASSWORD);
+                user.PASSWORD = encryptedMd5Password;
+
                 db.Users.Add(user);
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -69,7 +69,7 @@ namespace WebApp.Areas.Admin.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            User user = db.Users.Find(id);
+            var user = new UserModel().GetByUserId(id);
             if (user == null)
             {
                 return HttpNotFound();
@@ -83,13 +83,27 @@ namespace WebApp.Areas.Admin.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "USERID,USERNAME,PASSWORD,EMAIL,FULLNAME,BIOGRAPHY,STATUSID")] User user)
+        public ActionResult Edit(User user)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(user).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                var dao = new UserModel();
+                if (!string.IsNullOrEmpty(user.PASSWORD))
+                {
+                    var encryptedMd5Password = Encryptor.MD5Hash(user.PASSWORD);
+                    user.PASSWORD = encryptedMd5Password;
+                }
+
+                var result = dao.UpdateUser(user);
+
+                if (result)
+                {
+                    return RedirectToAction("Index");
+                }
+                else
+                {
+                    ModelState.AddModelError("", "Error");
+                }
             }
             ViewBag.STATUSID = new SelectList(db.Status, "STATUSID", "NAME", user.STATUSID);
             return View(user);

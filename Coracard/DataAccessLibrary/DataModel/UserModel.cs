@@ -1,9 +1,5 @@
 ﻿using DataAccessLibrary.DataControl;
-using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DataAccessLibrary.DataModel
 {
@@ -27,6 +23,43 @@ namespace DataAccessLibrary.DataModel
             return db.Users.SingleOrDefault(x => x.USERNAME == UserName);
         }
 
+        public User GetByUserId(int? id)
+        {
+            return db.Users.Find(id);
+        }
+
+        public bool UpdateUser(User entity)
+        {
+            try
+            {
+                var user = db.Users.Find(entity.USERID);
+                user.EMAIL = entity.EMAIL;
+                user.FULLNAME = entity.FULLNAME;
+                user.BIOGRAPHY = entity.BIOGRAPHY;
+                user.STATUSID = entity.STATUSID;
+                db.SaveChanges();
+                return true;
+            }catch
+            {
+                return false;
+            }
+        }
+
+        public bool UpdateUserPassword(User entity)
+        {
+            try
+            {
+                var user = db.Users.Find(entity.USERID);
+                user.PASSWORD = entity.PASSWORD;
+                db.SaveChanges();
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
         public int Login(string userName, string password)
         {
             var result = db.Users.SingleOrDefault(x => x.USERNAME == userName);
@@ -38,7 +71,7 @@ namespace DataAccessLibrary.DataModel
             {
                 if (result.STATUSID != 1)
                 {
-                    //waiting active email
+                    // waiting active email
                     if (result.STATUSID == 2)
                     {
                         return -1;
@@ -50,7 +83,7 @@ namespace DataAccessLibrary.DataModel
                     }
                 }
                 else
-                {
+                {   // check password 
                     if (result.PASSWORD == password)
                     {
                         return 1;

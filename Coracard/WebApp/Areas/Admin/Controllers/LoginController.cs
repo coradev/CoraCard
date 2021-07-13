@@ -1,8 +1,4 @@
 ﻿using DataAccessLibrary.DataModel;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 using WebApp.Common;
 using WebApp.Models;
@@ -22,7 +18,7 @@ namespace WebApp.Areas.Admin.Controllers
             if (ModelState.IsValid)
             {
                 var um = new UserModel();
-                var result = um.Login(model.UserName, model.Password);
+                var result = um.Login(model.UserName,  Encryptor.MD5Hash(model.Password));
                 if (result == 1)
                 {
                     var user = um.GetByUserName(model.UserName);
