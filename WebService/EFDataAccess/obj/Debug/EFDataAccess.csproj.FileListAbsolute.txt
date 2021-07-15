@@ -1,0 +1,12 @@
+C:\Users\admin\Desktop\CoraCard\WebService\EFDataAccess\bin\Debug\EFDataAccess.dll.config
+C:\Users\admin\Desktop\CoraCard\WebService\EFDataAccess\bin\Debug\EFDataAccess.dll
+C:\Users\admin\Desktop\CoraCard\WebService\EFDataAccess\bin\Debug\EFDataAccess.pdb
+C:\Users\admin\Desktop\CoraCard\WebService\EFDataAccess\bin\Debug\EntityFramework.dll
+C:\Users\admin\Desktop\CoraCard\WebService\EFDataAccess\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\admin\Desktop\CoraCard\WebService\EFDataAccess\bin\Debug\EntityFramework.xml
+C:\Users\admin\Desktop\CoraCard\WebService\EFDataAccess\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\admin\Desktop\CoraCard\WebService\EFDataAccess\obj\Debug\EFDataAccess.csproj.AssemblyReference.cache
+C:\Users\admin\Desktop\CoraCard\WebService\EFDataAccess\obj\Debug\EFDataAccess.csproj.CoreCompileInputs.cache
+C:\Users\admin\Desktop\CoraCard\WebService\EFDataAccess\obj\Debug\EFDataAccess.csproj.CopyComplete
+C:\Users\admin\Desktop\CoraCard\WebService\EFDataAccess\obj\Debug\EFDataAccess.dll
+C:\Users\admin\Desktop\CoraCard\WebService\EFDataAccess\obj\Debug\EFDataAccess.pdb

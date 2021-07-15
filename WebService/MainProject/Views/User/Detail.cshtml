@@ -1,0 +1,66 @@
+﻿@{
+    Layout = null;
+}
+@model EFDataAccess.EF.User
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <base href="/" />
+    @Styles.Render("~/Css/profile")
+    <title>Quang Truong</title>
+</head>
+<body>
+    <div class="profile">
+
+        <!-- INFORMATION SECTION -->
+        <div class="profile-info">
+            <div class="profile-info__flex">
+                <img src="@Html.DisplayFor(model => model.AVATAR)" alt="" class="info-image boder-beauty">
+                <div class="info-detail">
+                    <div class="info-detail__name">@Html.DisplayFor(model => model.FULLNAME)</div>
+                    <div class="info-detail__description">@Html.DisplayFor(model => model.BIOGRAPHY)</div>
+                    <div class="info-detail__addcontact">
+                        <button>Thêm vào danh bạ</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- END INFORMATION SECTION -->
+        <!-- SOCIAL MEDIA SECTION -->
+        <div class="profile-social" style="display: block;">
+            @foreach (var social in Model.Socials)
+             {
+                <a href="@social.LINK" class="social-item border-t-3 border-black">
+                    <div class="item-center__flex">
+                        <img src="@social.IMAGE" alt="" class="social-image">
+                        <div class="social-name">@social.NAME</div>
+                    </div>
+                </a>
+            }
+
+        </div>
+        <!-- END SOCIAL MEDIA SECTION -->
+        <!-- FOOTER SECTION -->
+        <div class="profile-footer">
+            <div class="footer-logo__center">
+                <div class="logo-text">
+                    CoraCard
+                </div>
+            </div>
+            <div class="footer-text__center">
+                <div class="text-item">
+                    Thẻ thông minh <a href="#" class="text-item__link">CoraCard</a>
+                </div>
+                <div class="text-item">
+                    Thẻ cá nhân thông minh đầu tiên tại Việt Nam
+                </div>
+            </div>
+        </div>
+        <!-- END FOOTER SECTION -->
+    </div>
+</body>
+</html>

@@ -1,0 +1,6 @@
+C:\Users\admin\Desktop\CoraCard\WebService\DataAccessLayer\obj\Debug\DataAccessLayer.csproj.CoreCompileInputs.cache
+C:\Users\admin\Desktop\CoraCard\WebService\DataAccessLayer\bin\Debug\DataAccessLayer.dll.config
+C:\Users\admin\Desktop\CoraCard\WebService\DataAccessLayer\bin\Debug\DataAccessLayer.dll
+C:\Users\admin\Desktop\CoraCard\WebService\DataAccessLayer\bin\Debug\DataAccessLayer.pdb
+C:\Users\admin\Desktop\CoraCard\WebService\DataAccessLayer\obj\Debug\DataAccessLayer.dll
+C:\Users\admin\Desktop\CoraCard\WebService\DataAccessLayer\obj\Debug\DataAccessLayer.pdb
