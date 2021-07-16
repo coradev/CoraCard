@@ -12,12 +12,12 @@ namespace MainProject
         public static void RegisterRoutes(RouteCollection routes)
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
-
-            //routes.MapRoute(
-            //    name: "User",
-            //    url: "{UserName}/{controller}/{action}",
-            //    defaults: new { controller = "User", action = "Detail" }
-            //);
+            
+            routes.MapRoute(
+                name: "User",
+                url: "user/{UserName}",
+                new { controller = "User", action = "Detail" }
+            );
 
             routes.MapRoute(
                 name: "Default",

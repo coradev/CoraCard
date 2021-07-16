@@ -11,7 +11,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <base href="/" />
     @Styles.Render("~/Css/profile")
-    <title>Quang Truong</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <style>
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        ::-webkit-scrollbar-track-piece {
+            background-color: #FFF;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background-color: #CBCBCB;
+            outline: 2px solid #FFF;
+            outline-offset: -2px;
+            border: .1px solid #B7B7B7;
+        }
+
+            ::-webkit-scrollbar-thumb:hover {
+                background-color: #909090;
+            }
+    </style>
+    <title>@Html.DisplayFor(model => model.FULLNAME)</title>
 </head>
 <body>
     <div class="profile">
@@ -19,12 +40,12 @@
         <!-- INFORMATION SECTION -->
         <div class="profile-info">
             <div class="profile-info__flex">
-                <img src="@Html.DisplayFor(model => model.AVATAR)" alt="" class="info-image boder-beauty">
+                <img src="upload/image/avatar/@Html.DisplayFor(model => model.AVATAR)" alt="" class="info-image boder-beauty">
                 <div class="info-detail">
-                    <div class="info-detail__name">@Html.DisplayFor(model => model.FULLNAME)</div>
+                    <div class="info-detail__name">@Html.DisplayFor(model => model.FULLNAME) <img src="~/Assets/img/check.svg" class="blue-tick" /> </div>
                     <div class="info-detail__description">@Html.DisplayFor(model => model.BIOGRAPHY)</div>
                     <div class="info-detail__addcontact">
-                        <button>Thêm vào danh bạ</button>
+                        <a href="http://example.com/file.vcf" target="_blank" class="button">Thêm vào danh bạ</a>
                     </div>
                 </div>
             </div>
@@ -33,10 +54,10 @@
         <!-- SOCIAL MEDIA SECTION -->
         <div class="profile-social" style="display: block;">
             @foreach (var social in Model.Socials)
-             {
-                <a href="@social.LINK" class="social-item border-t-3 border-black">
+            {
+                <a href="@social.LINK" target="_blank" class="social-item border-t-3 border-black">
                     <div class="item-center__flex">
-                        <img src="@social.IMAGE" alt="" class="social-image">
+                        <img src="upload/image/icon/@social.IMAGE" alt="" class="social-image">
                         <div class="social-name">@social.NAME</div>
                     </div>
                 </a>
@@ -56,11 +77,19 @@
                     Thẻ thông minh <a href="#" class="text-item__link">CoraCard</a>
                 </div>
                 <div class="text-item">
-                    Thẻ cá nhân thông minh đầu tiên tại Việt Nam
+                    Thẻ cá nhân thông minh tại Việt Nam
                 </div>
             </div>
         </div>
         <!-- END FOOTER SECTION -->
     </div>
+    <script>
+        $("body").on("contextmenu", function (e) {
+            return false;
+        });
+        $("img").mousedown(function (e) {
+            e.preventDefault()
+        });
+    </script>
 </body>
 </html>

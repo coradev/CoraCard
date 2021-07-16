@@ -1,32 +1,41 @@
-﻿<div class="container-fluid px-4">
+﻿@model EFDataAccess.EF.User
+
+<div class="container-fluid px-4">
     <div class="row justify-content-center">
         <div class="col-lg-5">
             <div class="card shadow border-0 rounded-lg mt-5">
                 <div class="card-header"><h3 class="text-center font-weight-light my-4">Create Account</h3></div>
                 <div class="card-body">
-                    <form>
+                    @using (Html.BeginForm("Index", "Register", FormMethod.Post, new { @onsubmit = "return check(this)" }))
+                    {
+                        @Html.AntiForgeryToken()
+                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
                         <div class="row mb-3">
                             <div class="col-md-6">
                                 <div class="form-floating mb-3 mb-md-0">
-                                    <input class="form-control" id="inputFirstName" type="text" placeholder="Enter your first name" />
-                                    <label for="inputFirstName">First name</label>
+                                    @Html.TextBoxFor(model => model.FULLNAME, new { @class = "form-control", @id = "inputFullName", @placeholder = "Enter your full name", @required = "required" })
+                                    @Html.ValidationMessageFor(model => model.FULLNAME, "", new { @class = "text-danger" })
+                                    <label for="inputFullName">Full name</label>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-floating">
-                                    <input class="form-control" id="inputLastName" type="text" placeholder="Enter your last name" />
-                                    <label for="inputLastName">Last name</label>
+                                    @Html.TextBoxFor(model => model.USERNAME, new { @class = "form-control", @id = "inputUserName", @placeholder = "Enter username", @required = "required" })
+                                    @Html.ValidationMessageFor(model => model.USERNAME, "", new { @class = "text-danger" })
+                                    <label for="inputUserName">Username</label>
                                 </div>
                             </div>
                         </div>
                         <div class="form-floating mb-3">
-                            <input class="form-control" id="inputEmail" type="email" placeholder="name@example.com" />
+                            @Html.TextBoxFor(model => model.EMAIL, new { @class = "form-control", @id = "inputEmail", @placeholder = "name@kotzava.com", @type = "email", @required = "required" })
+                            @Html.ValidationMessageFor(model => model.EMAIL, "", new { @class = "text-danger" })
                             <label for="inputEmail">Email address</label>
                         </div>
                         <div class="row mb-3">
                             <div class="col-md-6">
                                 <div class="form-floating mb-3 mb-md-0">
-                                    <input class="form-control" id="inputPassword" type="password" placeholder="Create a password" />
+                                    @Html.PasswordFor(model => model.PASSWORD, new { @class = "form-control", @id = "inputPassword", @placeholder = "Create a password", @required = "required" })
+                                    @Html.ValidationMessageFor(model => model.PASSWORD, "", new { @class = "text-danger" })
                                     <label for="inputPassword">Password</label>
                                 </div>
                             </div>
@@ -38,11 +47,29 @@
                             </div>
                         </div>
                         <div class="mt-4 mb-0">
-                            <div class="d-grid"><a class="btn btn-success btn-block" href="#">Create Account</a></div>
+                            <div class="d-grid"><button class="btn btn-success btn-block" type="submit">Create Account</button></div>
                         </div>
-                    </form>
+                    }
                 </div>
             </div>
         </div>
     </div>
 </div>
+<script>
+    function check(form) {
+        var inputPassword = document.getElementById('inputPassword').value;
+        var inputPasswordConfirm = document.getElementById('inputPasswordConfirm').value;
+        if (inputPassword === "" || inputPassword === null) {
+            return false;
+        } else {
+            if (inputPassword === inputPasswordConfirm) {
+                return true;
+            } else {
+                alert("Incorrect password confirm!")
+                return false;
+            }
+        }
+    }
+
+
+</script>

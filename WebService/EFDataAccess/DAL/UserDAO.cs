@@ -57,6 +57,32 @@ namespace EFDataAccess.DAL
             return db.Users.SingleOrDefault(x => x.USERNAME == UserName);
         }
 
+        public User GetUserByEmail(string UserEmail)
+        {
+            return db.Users.SingleOrDefault(x => x.EMAIL == UserEmail);
+        }
+
+        public int GetRoleIdByRoleName(string RoleName)
+        {
+            Role role = db.Roles.SingleOrDefault(x => x.NAME.ToLower() == RoleName.ToLower());
+            return role.ROLEID;
+        }
+
+        public int AddUser(User entity)
+        {
+            User user = new User();
+            user.USERNAME = entity.USERNAME;
+            user.PASSWORD = entity.PASSWORD;
+            user.AVATAR = "default.png";
+            user.EMAIL = entity.EMAIL;
+            user.FULLNAME = entity.FULLNAME;
+            user.BIOGRAPHY = "New member of CoraCard";
+            user.STATUSID = 1;
+            db.Users.Add(user);
+            db.SaveChanges();
+            return user.USERID;
+        }
+
         //public int GetUserRole(string UserName)
         //{
         //    var userRoles = GetUserByUserName(UserName).Roles.Select(r => r.ROLEID);

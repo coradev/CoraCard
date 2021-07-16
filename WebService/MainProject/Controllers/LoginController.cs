@@ -14,7 +14,9 @@ namespace MainProject.Controllers
         // GET: Login
         public ActionResult Index()
         {
+            var Message = TempData["Message"];
             ViewBag.Title = "Login";
+            ViewBag.Message = Message;
             return View();
         }
 
@@ -55,6 +57,12 @@ namespace MainProject.Controllers
                 }
             }
             return View("Index");
+        }
+
+        public ActionResult Logout()
+        {
+            Session[CMConst.USER_SESSION] = null;
+            return RedirectToAction("Index", "Login");
         }
     }
 }

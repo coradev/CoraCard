@@ -11,7 +11,6 @@ namespace MainProject.Controllers
 {
     public class UserController : Controller
     {
-        // GET: User
         public ActionResult Detail(string UserName)
         {
             var dao = new UserDAO();

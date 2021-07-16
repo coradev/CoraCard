@@ -4,3 +4,4 @@ C:\Users\admin\Desktop\CoraCard\WebService\DataAccessLayer\bin\Debug\DataAccessL
 C:\Users\admin\Desktop\CoraCard\WebService\DataAccessLayer\bin\Debug\DataAccessLayer.pdb
 C:\Users\admin\Desktop\CoraCard\WebService\DataAccessLayer\obj\Debug\DataAccessLayer.dll
 C:\Users\admin\Desktop\CoraCard\WebService\DataAccessLayer\obj\Debug\DataAccessLayer.pdb
+C:\Users\admin\Desktop\CoraCard\WebService\DataAccessLayer\obj\Debug\DataAccessLayer.csproj.AssemblyReference.cache

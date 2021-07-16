@@ -48,6 +48,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -124,6 +130,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
+    <Compile Include="Areas\Admin\Controllers\UsersController.cs" />
     <Compile Include="Common\CMConst.cs" />
     <Compile Include="Common\NameNotAllow.cs" />
     <Compile Include="Common\UserLogin.cs" />
@@ -144,13 +151,10 @@
     <Content Include="Assets\css\profilestyle.css" />
     <Content Include="Assets\css\richtext.min.css" />
     <Content Include="Assets\css\styles.css" />
+    <Content Include="Assets\img\check.svg" />
     <Content Include="Assets\img\error-404-monochrome.svg" />
-    <Content Include="Assets\img\social-profile\behance.png" />
-    <Content Include="Assets\img\social-profile\default.jpeg" />
-    <Content Include="Assets\img\social-profile\earth-globe.png" />
-    <Content Include="Assets\img\social-profile\facebook.png" />
-    <Content Include="Assets\img\social-profile\instagram.png" />
-    <Content Include="Assets\img\social-profile\twitter.png" />
+    <Content Include="Upload\Image\Avatar\default.png" />
+    <Content Include="Upload\Image\Icon\earth-globe.png" />
     <Content Include="Assets\js\bootstrap.bundle.min.js" />
     <Content Include="Assets\js\font-awesome.min.js" />
     <Content Include="Assets\js\jquery.richtext.js" />
@@ -158,10 +162,68 @@
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Areas\Admin\Views\web.config" />
+    <Content Include="Areas\Admin\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\_Layout.cshtml" />
+    <Content Include="Areas\Admin\Views\Users\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\Users\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\Users\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\Users\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Users\Index.cshtml" />
     <None Include="Dockerfile" />
     <None Include=".dockerignore">
       <DependentUpon>Dockerfile</DependentUpon>
     </None>
+    <Content Include="Upload\Image\Avatar\truong.jpg" />
+    <Content Include="Upload\Image\Icon\badoo.png" />
+    <Content Include="Upload\Image\Icon\behance.png" />
+    <Content Include="Upload\Image\Icon\bing.png" />
+    <Content Include="Upload\Image\Icon\blogger.png" />
+    <Content Include="Upload\Image\Icon\chrome.png" />
+    <Content Include="Upload\Image\Icon\creative-market.png" />
+    <Content Include="Upload\Image\Icon\deviantart.png" />
+    <Content Include="Upload\Image\Icon\discord.png" />
+    <Content Include="Upload\Image\Icon\dribbble.png" />
+    <Content Include="Upload\Image\Icon\dropbox.png" />
+    <Content Include="Upload\Image\Icon\facebook.png" />
+    <Content Include="Upload\Image\Icon\flickr.png" />
+    <Content Include="Upload\Image\Icon\flipboard.png" />
+    <Content Include="Upload\Image\Icon\forrst.png" />
+    <Content Include="Upload\Image\Icon\foursquare.png" />
+    <Content Include="Upload\Image\Icon\gmail.png" />
+    <Content Include="Upload\Image\Icon\google-drive.png" />
+    <Content Include="Upload\Image\Icon\google-maps.png" />
+    <Content Include="Upload\Image\Icon\google-plus.png" />
+    <Content Include="Upload\Image\Icon\google.png" />
+    <Content Include="Upload\Image\Icon\hangouts.png" />
+    <Content Include="Upload\Image\Icon\instagram.png" />
+    <Content Include="Upload\Image\Icon\kickstarter.png" />
+    <Content Include="Upload\Image\Icon\kik.png" />
+    <Content Include="Upload\Image\Icon\line.png" />
+    <Content Include="Upload\Image\Icon\linkedin.png" />
+    <Content Include="Upload\Image\Icon\messenger.png" />
+    <Content Include="Upload\Image\Icon\myspace.png" />
+    <Content Include="Upload\Image\Icon\path.png" />
+    <Content Include="Upload\Image\Icon\paypal.png" />
+    <Content Include="Upload\Image\Icon\playstore.png" />
+    <Content Include="Upload\Image\Icon\reddit.png" />
+    <Content Include="Upload\Image\Icon\rss.png" />
+    <Content Include="Upload\Image\Icon\safari.png" />
+    <Content Include="Upload\Image\Icon\shutterstock.png" />
+    <Content Include="Upload\Image\Icon\skype.png" />
+    <Content Include="Upload\Image\Icon\snapchat.png" />
+    <Content Include="Upload\Image\Icon\snapseed.png" />
+    <Content Include="Upload\Image\Icon\soundcloud.png" />
+    <Content Include="Upload\Image\Icon\stumbleupon.png" />
+    <Content Include="Upload\Image\Icon\swarm.png" />
+    <Content Include="Upload\Image\Icon\telegram.png" />
+    <Content Include="Upload\Image\Icon\tumblr.png" />
+    <Content Include="Upload\Image\Icon\twitch.png" />
+    <Content Include="Upload\Image\Icon\twitter.png" />
+    <Content Include="Upload\Image\Icon\vine.png" />
+    <Content Include="Upload\Image\Icon\vsco.png" />
+    <Content Include="Upload\Image\Icon\whatsapp.png" />
+    <Content Include="Upload\Image\Icon\yelp.png" />
+    <Content Include="Upload\Image\Icon\youtube.png" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -179,13 +241,10 @@
     <Content Include="Views\Error\Error500.cshtml" />
     <Content Include="Views\Error\Error404.cshtml" />
     <Content Include="Views\Register\Index.cshtml" />
-    <Content Include="Views\Shared\_PartialLoggedMenu.cshtml" />
     <Content Include="Views\User\Detail.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Areas\Admin\Controllers\" />
     <Folder Include="Areas\Admin\Data\" />
-    <Folder Include="Areas\Admin\Views\Shared\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

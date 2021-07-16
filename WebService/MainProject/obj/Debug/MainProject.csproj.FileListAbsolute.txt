@@ -85,3 +85,5 @@ C:\Users\admin\Desktop\CoraCard\WebService\MainProject\bin\DataAccessLayer.dll.c
 C:\Users\admin\Desktop\CoraCard\WebService\MainProject\bin\EFDataAccess.pdb
 C:\Users\admin\Desktop\CoraCard\WebService\MainProject\bin\EFDataAccess.dll.config
 C:\Users\admin\Desktop\CoraCard\WebService\MainProject\bin\EntityFramework.xml
+C:\Users\admin\Desktop\CoraCard\WebService\MainProject\bin\EntityFramework.SqlServer.dll
+C:\Users\admin\Desktop\CoraCard\WebService\MainProject\bin\EntityFramework.SqlServer.xml
