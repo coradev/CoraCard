@@ -21,7 +21,6 @@ namespace MainProject.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Index([Bind(Exclude = "AVATAR, BIOGRAPHY, STATUSID")] User user)
         {
-
             var udao = new UserDAO();
             var sdao = new SocialDAO();
 

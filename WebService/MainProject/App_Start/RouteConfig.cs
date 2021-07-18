@@ -16,13 +16,13 @@ namespace MainProject
             routes.MapRoute(
                 name: "User",
                 url: "user/{UserName}",
-                new { controller = "User", action = "Detail" }
+                new { controller = "User", action = "Detail", area= "" }
             );
 
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
-                defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
+                defaults: new { controller = "Home", action = "Index", area = "", id = UrlParameter.Optional }
             );
         }
     }

@@ -16,7 +16,7 @@ namespace MainProject.Controllers
             if (session == null)
             {
                 filterContext.Result = new RedirectToRouteResult(
-                    new RouteValueDictionary(new { controller = "Login", action = "Index" })
+                    new RouteValueDictionary(new { controller = "Login", action = "Index", area = "" })
                     );
             }
             else

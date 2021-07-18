@@ -1,0 +1,47 @@
+﻿@model IEnumerable<EFDataAccess.EF.Social>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<div class="card mb-4">
+    <div class="card-body">
+        <table class="table">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.NAME)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.LINK)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.IMAGE)
+                </th>
+                <th></th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.NAME)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.LINK)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.IMAGE)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { id = item.SOCIALID }) |
+                        @Html.ActionLink("Details", "Details", new { id = item.SOCIALID }) |
+                        @Html.ActionLink("Delete", "Delete", new { id = item.SOCIALID })
+                    </td>
+                </tr>
+            }
+        </table>
+        <p>
+            @Html.ActionLink("Create New", "Create")
+        </p>
+    </div>
+</div>
