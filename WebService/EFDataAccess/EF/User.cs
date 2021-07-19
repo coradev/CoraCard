@@ -5,6 +5,7 @@ namespace EFDataAccess.EF
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
+    using System.Web;
 
     [Table("User")]
     public partial class User
@@ -31,6 +32,9 @@ namespace EFDataAccess.EF
         [Required]
         [StringLength(500)]
         public string AVATAR { get; set; }
+
+        [NotMapped]
+        public HttpPostedFileBase ImageFile { get; set; }
 
         [Required]
         [StringLength(100)]

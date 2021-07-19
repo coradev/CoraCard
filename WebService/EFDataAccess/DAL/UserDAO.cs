@@ -83,11 +83,37 @@ namespace EFDataAccess.DAL
             return user.USERID;
         }
 
-        //public int GetUserRole(string UserName)
-        //{
-        //    var userRoles = GetUserByUserName(UserName).Roles.Select(r => r.ROLEID);
-        //    var roles = db.Roles.Where(r => userRoles.Contains(r.ROLEID));
-        //    return roles.Select(r => r.ROLEID).First();
-        //}
+        public bool EditUser(User entity)
+        {
+            try
+            {
+                User user = db.Users.Find(entity.USERID);
+                user.AVATAR = entity.AVATAR;
+                user.EMAIL = entity.EMAIL; // require check mail, and check correct password
+                user.FULLNAME = entity.FULLNAME;
+                user.BIOGRAPHY = entity.BIOGRAPHY;
+                db.SaveChanges();
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
+        public bool ChangePassword(User entity)
+        {
+            try
+            {
+                User user = db.Users.Find(entity.USERID);
+                user.PASSWORD = entity.PASSWORD; // require input old pass and 2 new pass
+                db.SaveChanges();
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
     }
 }

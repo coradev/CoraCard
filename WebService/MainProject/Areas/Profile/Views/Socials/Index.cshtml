@@ -1,47 +1,86 @@
 ﻿@model IEnumerable<EFDataAccess.EF.Social>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "All your social media";
 }
 
-<div class="card mb-4">
-    <div class="card-body">
-        <table class="table">
-            <tr>
-                <th>
-                    @Html.DisplayNameFor(model => model.NAME)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.LINK)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.IMAGE)
-                </th>
-                <th></th>
-            </tr>
+<style>
+    .img {
+        width: 50px;
+        height: 50px;
+        border-radius: 999px;
+    }
 
-            @foreach (var item in Model)
-            {
-                <tr>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.NAME)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.LINK)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.IMAGE)
-                    </td>
-                    <td>
-                        @Html.ActionLink("Edit", "Edit", new { id = item.SOCIALID }) |
-                        @Html.ActionLink("Details", "Details", new { id = item.SOCIALID }) |
-                        @Html.ActionLink("Delete", "Delete", new { id = item.SOCIALID })
-                    </td>
-                </tr>
-            }
-        </table>
-        <p>
-            @Html.ActionLink("Create New", "Create")
-        </p>
+    .table .thead-dark th {
+        color: #fff;
+        background-color: #343a40;
+        border-color: #454d55;
+    }
+
+    td, tr th {
+        vertical-align: middle;
+    }
+
+    .btn-custom {
+        line-height: .5;
+    }
+
+    .btn-label {
+        position: relative;
+        left: -12px;
+        display: inline-block;
+        padding: 6px 12px;
+        background: rgba(0, 0, 0, 0.15);
+        border-radius: 3px 0 0 3px;
+    }
+
+    .btn-labeled {
+        padding-top: 0;
+        padding-bottom: 0;
+    }
+</style>
+<div class="container-fluid px-4">
+    <div class="row justify-content-center">
+        <div class="col-lg-8">
+            <div class="card shadow border-0 rounded-lg mt-5">
+                <div class="card-header">
+                    <h3 class="text-center font-weight-light my-4">List Socials</h3>
+                </div>
+                <div class="card-body">
+                    <table class="table table-striped">
+                        <thead class="thead-dark thead-light">
+                            <tr>
+                                <th scope="col">@Html.DisplayNameFor(model => model.NAME)</th>
+                                <th scope="col">@Html.DisplayNameFor(model => model.LINK)</th>
+                                <th scope="col">@Html.DisplayNameFor(model => model.IMAGE)</th>
+                                <th scope="col"></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <th scope="row">@Html.DisplayFor(modelItem => item.NAME)</th>
+                                    <td>@Html.DisplayFor(modelItem => item.LINK)</td>
+                                    <td><img src="~/Upload/Image/Icon/@Html.DisplayFor(modelItem => item.IMAGE)" class="img img-thumbnail"></td>
+                                    <td>
+                                        <a href="@Url.Action("Edit", new { id = item.SOCIALID })" class="btn btn-labeled btn-warning btn-custom">
+                                            <span class="btn-label"><i class="fas fa-pen"></i></span><span class="text-link">Edit</span>
+                                        </a>
+                                        <a href="@Url.Action("Delete", new { id = item.SOCIALID })" class="btn btn-labeled btn-danger btn-custom">
+                                            <span class="btn-label"><i class="fas fa-times"></i></span><span class="text-link">Delete</span>
+                                        </a>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                    <div class="d-grid">
+                        @Html.ActionLink("Create New", "Create", null, new { @class = "btn btn-success btn-block" })
+                    </div>
+                </div>
+
+            </div>
+        </div>
     </div>
 </div>

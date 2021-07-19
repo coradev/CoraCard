@@ -134,7 +134,6 @@
     <Compile Include="Areas\Profile\Controllers\InfoController.cs" />
     <Compile Include="Areas\Profile\Controllers\SocialsController.cs" />
     <Compile Include="Areas\Profile\ProfileAreaRegistration.cs" />
-    <Compile Include="Areas\Upload\UploadAreaRegistration.cs" />
     <Compile Include="Common\CMConst.cs" />
     <Compile Include="Common\NameNotAllow.cs" />
     <Compile Include="Common\UserLogin.cs" />
@@ -175,7 +174,6 @@
     <Content Include="Areas\Admin\Views\Users\Index.cshtml" />
     <Content Include="Areas\Profile\Views\web.config" />
     <Content Include="Areas\Profile\Views\Shared\_Layout.cshtml" />
-    <Content Include="Areas\Upload\Views\web.config" />
     <Content Include="Areas\Profile\Views\_ViewStart.cshtml" />
     <Content Include="Areas\Profile\Views\Socials\Create.cshtml" />
     <Content Include="Areas\Profile\Views\Socials\Delete.cshtml" />
@@ -258,11 +256,6 @@
   <ItemGroup>
     <Folder Include="Areas\Admin\Data\" />
     <Folder Include="Areas\Profile\Views\Info\" />
-    <Folder Include="Areas\Profile\Views\RequiredLoginForArea\" />
-    <Folder Include="Areas\Profile\Views\RequireLogin\" />
-    <Folder Include="Areas\Upload\Controllers\" />
-    <Folder Include="Areas\Upload\Data\" />
-    <Folder Include="Areas\Upload\Views\Shared\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

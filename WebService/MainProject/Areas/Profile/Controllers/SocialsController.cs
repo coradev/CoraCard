@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Web;
@@ -63,7 +64,7 @@ namespace MainProject.Areas.Profile.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "SOCIALID,NAME,LINK,IMAGE")] Social social)
+        public ActionResult Create(Social social)
         {
             var user = (Common.UserLogin)Session[Common.CMConst.USER_SESSION];
             if (user == null)
@@ -72,15 +73,24 @@ namespace MainProject.Areas.Profile.Controllers
             }
             else
             {
-                if (ModelState.IsValid)
+                if (social.ImageFile != null)
                 {
-                    var dao = new SocialDAO();
-                    var sid = dao.AddSocial(social);
-                    DataAccessLayer.SocialDAO.AddUserSocial(user.UserId, sid);
-                    return RedirectToAction("Index");
+                    string fileName = Path.GetFileNameWithoutExtension(social.ImageFile.FileName);
+                    string extension = Path.GetExtension(social.ImageFile.FileName);
+                    fileName = fileName + DateTime.Now.ToString("yymmssfff") + extension;
+                    social.IMAGE = fileName;
+                    fileName = Path.Combine(Server.MapPath("~/Upload/Image/Icon/"), fileName);
+                    social.ImageFile.SaveAs(fileName);
                 }
+                else
+                {
+                    social.IMAGE = "default.png";
+                }
+                var dao = new SocialDAO();
+                var sid = dao.AddSocial(social);
+                DataAccessLayer.SocialDAO.AddUserSocial(user.UserId, sid);
+                return RedirectToAction("Index");
             }
-            return View(social);
         }
 
         public ActionResult Edit(int id)
@@ -114,7 +124,7 @@ namespace MainProject.Areas.Profile.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "SOCIALID,NAME,LINK,IMAGE")] Social social)
+        public ActionResult Edit(Social social)
         {
             var user = (Common.UserLogin)Session[Common.CMConst.USER_SESSION];
             if (user == null)
@@ -129,15 +139,22 @@ namespace MainProject.Areas.Profile.Controllers
                 bool check = CheckIdSocial(social.SOCIALID, listSocial);
                 if (check)
                 {
-                    if (ModelState.IsValid)
+                    if (social.ImageFile != null)
                     {
-                        dao.EditSocial(social);
-                        return RedirectToAction("Index");
+                        string fileName = Path.GetFileNameWithoutExtension(social.ImageFile.FileName);
+                        string extension = Path.GetExtension(social.ImageFile.FileName);
+                        fileName = fileName + DateTime.Now.ToString("yymmssfff") + extension;
+                        social.IMAGE = fileName;
+                        fileName = Path.Combine(Server.MapPath("~/Upload/Image/Icon/"), fileName);
+                        social.ImageFile.SaveAs(fileName);
                     }
                     else
                     {
-                        return View(social);
+                        social.IMAGE = dao.GetSocial(social.SOCIALID).IMAGE;
                     }
+
+                    dao.EditSocial(social);
+                    return RedirectToAction("Index");
                 }
                 else
                 {
