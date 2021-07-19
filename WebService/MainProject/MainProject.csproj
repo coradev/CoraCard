@@ -175,10 +175,11 @@
     <Content Include="Areas\Profile\Views\web.config" />
     <Content Include="Areas\Profile\Views\Shared\_Layout.cshtml" />
     <Content Include="Areas\Profile\Views\_ViewStart.cshtml" />
-    <Content Include="Areas\Profile\Views\Socials\Create.cshtml" />
     <Content Include="Areas\Profile\Views\Socials\Delete.cshtml" />
     <Content Include="Areas\Profile\Views\Socials\Edit.cshtml" />
     <Content Include="Areas\Profile\Views\Socials\Index.cshtml" />
+    <Content Include="Areas\Profile\Views\Socials\Add.cshtml" />
+    <Content Include="Areas\Profile\Views\Info\Index.cshtml" />
     <None Include="Dockerfile" />
     <None Include=".dockerignore">
       <DependentUpon>Dockerfile</DependentUpon>
@@ -255,7 +256,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Areas\Admin\Data\" />
-    <Folder Include="Areas\Profile\Views\Info\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

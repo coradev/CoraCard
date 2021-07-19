@@ -9,6 +9,7 @@ using System.Web;
 using System.Web.Mvc;
 using EFDataAccess.DAL;
 using EFDataAccess.EF;
+using EFDataAccess.Models;
 
 namespace MainProject.Areas.Profile.Controllers
 {
@@ -49,7 +50,7 @@ namespace MainProject.Areas.Profile.Controllers
             }
         }
 
-        public ActionResult Create()
+        public ActionResult Add()
         {
             var user = (Common.UserLogin)Session[Common.CMConst.USER_SESSION];
             if (user == null)
@@ -64,7 +65,7 @@ namespace MainProject.Areas.Profile.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(Social social)
+        public ActionResult Add(SocialModel entity)
         {
             var user = (Common.UserLogin)Session[Common.CMConst.USER_SESSION];
             if (user == null)
@@ -73,23 +74,36 @@ namespace MainProject.Areas.Profile.Controllers
             }
             else
             {
-                if (social.ImageFile != null)
+                if (ModelState.IsValid)
                 {
-                    string fileName = Path.GetFileNameWithoutExtension(social.ImageFile.FileName);
-                    string extension = Path.GetExtension(social.ImageFile.FileName);
-                    fileName = fileName + DateTime.Now.ToString("yymmssfff") + extension;
-                    social.IMAGE = fileName;
-                    fileName = Path.Combine(Server.MapPath("~/Upload/Image/Icon/"), fileName);
-                    social.ImageFile.SaveAs(fileName);
+                    if (entity.ImageFile != null)
+                    {
+                        string fileName = Path.GetFileNameWithoutExtension(entity.ImageFile.FileName);
+                        string extension = Path.GetExtension(entity.ImageFile.FileName);
+                        fileName = fileName + DateTime.Now.ToString("yymmssfff") + extension;
+                        entity.SocialImage = fileName;
+                        fileName = Path.Combine(Server.MapPath("~/Upload/Image/Icon/"), fileName);
+                        entity.ImageFile.SaveAs(fileName);
+                    }
+                    else
+                    {
+                        entity.SocialImage = "default.png";
+                    }
+                    var dao = new SocialDAO();
+
+                    Social social = new Social();
+                    social.NAME = entity.SocialName;
+                    social.LINK = entity.SocialLink;
+                    social.IMAGE = entity.SocialImage;
+
+                    var sid = dao.AddSocial(social);
+                    DataAccessLayer.SocialDAO.AddUserSocial(user.UserId, sid);
+                    return RedirectToAction("Index");
                 }
                 else
                 {
-                    social.IMAGE = "default.png";
+                    return View("Add");
                 }
-                var dao = new SocialDAO();
-                var sid = dao.AddSocial(social);
-                DataAccessLayer.SocialDAO.AddUserSocial(user.UserId, sid);
-                return RedirectToAction("Index");
             }
         }
 
@@ -218,7 +232,6 @@ namespace MainProject.Areas.Profile.Controllers
                     return RedirectToAction("Error403", "Error", new { area = "" });
                 }
             }
-
         }
     }
 }

@@ -16,42 +16,6 @@ namespace EFDataAccess.DAL
             db = new CoraCardDBContext();
         }
 
-        public int Login(string UserName, string Password)
-        {
-            var result = db.Users.SingleOrDefault(x => x.USERNAME == UserName);
-            if (result == null)
-            {
-                return 0;
-            }
-            else
-            {
-                if (result.STATUSID != 1)
-                {
-                    // waiting active email
-                    if (result.STATUSID == 2)
-                    {
-                        return -1;
-                    }
-                    else
-                    {
-                        // user banned
-                        return -2;
-                    }
-                }
-                else
-                {   // check password 
-                    if (result.PASSWORD == Password)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return -3;
-                    }
-                }
-            }
-        }
-
         public User GetUserByUserName(string UserName)
         {
             return db.Users.SingleOrDefault(x => x.USERNAME == UserName);
@@ -89,9 +53,8 @@ namespace EFDataAccess.DAL
             {
                 User user = db.Users.Find(entity.USERID);
                 user.AVATAR = entity.AVATAR;
-                user.EMAIL = entity.EMAIL; // require check mail, and check correct password
-                user.FULLNAME = entity.FULLNAME;
                 user.BIOGRAPHY = entity.BIOGRAPHY;
+                user.FULLNAME = entity.FULLNAME;
                 db.SaveChanges();
                 return true;
             }
@@ -113,6 +76,42 @@ namespace EFDataAccess.DAL
             catch
             {
                 return false;
+            }
+        }
+
+        public int Login(string UserName, string Password)
+        {
+            var result = db.Users.SingleOrDefault(x => x.USERNAME == UserName);
+            if (result == null)
+            {
+                return 0;
+            }
+            else
+            {
+                if (result.STATUSID != 1)
+                {
+                    // waiting active email
+                    if (result.STATUSID == 2)
+                    {
+                        return -1;
+                    }
+                    else
+                    {
+                        // user banned
+                        return -2;
+                    }
+                }
+                else
+                {   // check password 
+                    if (result.PASSWORD == Password)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return -3;
+                    }
+                }
             }
         }
     }
