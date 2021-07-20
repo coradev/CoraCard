@@ -1,0 +1,383 @@
+﻿* {
+    box-sizing: border-box;
+}
+
+html {
+    height: 100%;
+}
+
+body {
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    font-family: -apple-system, ".SFNSText-Regular", "San Francisco", "Roboto", "Segoe UI", "Helvetica Neue", "Lucida Grande", sans-serif;
+    -webkit-font-smoothing: antialiased;
+    background-color: burlywood;
+}
+
+.qr-code {
+    border: solid 7px rgb(120, 233, 27);
+    width: 100%;
+}
+
+.exportable-container #exportable {
+    position: relative;
+    background: #272e36;
+    color: #fff;
+    width: 600px;
+    height: 330px;
+    overflow: hidden;
+    padding: 35px 280px 25px 35px;
+}
+
+.exportable-container .focused {
+    position: relative;
+    z-index: 9999;
+}
+
+    .exportable-container .focused:before {
+        content: "";
+        position: absolute;
+        top: -5px;
+        left: -10px;
+        width: calc(100% + 10px);
+        height: calc(100% + 10px);
+        box-shadow: 0 0 0 300px rgba(0, 0, 0, 0.5);
+    }
+
+.exportable-container .name {
+    font-size: 2.25rem;
+    font-weight: 500;
+    margin: 20px 0 10px;
+}
+
+.exportable-container .subtitle, .phone, .email {
+    font-size: 1.125rem;
+    color: rgba(255, 255, 255, 0.65);
+    padding: .2rem 0;
+}
+
+.exportable-container .whitepaper {
+    position: absolute;
+    right: 25px;
+    top: 25px;
+    width: 230px;
+    height: 275px;
+    background-size: cover;
+}
+
+.exportable-container .call-to-action {
+    height: 40px;
+    background: #3a444f;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: .9125rem;
+    font-weight: 600;
+}
+
+    .exportable-container .call-to-action.focused:before {
+        top: 0;
+        height: 100%;
+    }
+
+.editor {
+    background: white;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    border-top: 1px solid #f5f5f5;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.08);
+    flex-wrap: wrap;
+}
+
+    .editor select {
+        margin-right: 15px;
+    }
+
+    .editor input {
+        margin-right: 15px;
+        padding: 10px;
+        border-radius: 3px;
+        border: 1px solid #ccc;
+    }
+
+        .editor input:focus {
+            border-color: blue;
+        }
+
+.download-svg, .download-png, .homebtn {
+    display: inline-block;
+    height: 40px;
+    padding: 0 15px;
+    background: white;
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    box-shadow: 0 1px 4px 1px rgba(0, 0, 0, 0.1), 0 0 0 1px rgba(0, 0, 0, 0.08);
+    border-radius: 3px;
+    font-weight: 900;
+    margin: 0 1rem;
+    color: black;
+}
+
+
+.download-png {
+    color: white;
+    background: rgb(120, 233, 27);
+}
+
+.download-button {
+    display: flex;
+    margin-bottom: 2rem;
+    justify-content: space-between;
+}
+
+.homebtn {
+    background-image: url('/Assets/img/back-arrow.png');
+    background-size: 40px;
+    background-repeat: no-repeat;
+    color: black;
+}
+
+
+button,
+hr,
+input {
+    overflow: visible;
+}
+
+audio,
+canvas,
+progress,
+video {
+    display: inline-block;
+}
+
+progress,
+sub,
+sup {
+    vertical-align: baseline;
+}
+
+html {
+    font-family: sans-serif;
+    line-height: 1.15;
+    -ms-text-size-adjust: 100%;
+    -webkit-text-size-adjust: 100%;
+}
+
+body {
+    margin: 0;
+}
+
+menu,
+article,
+aside,
+details,
+footer,
+header,
+nav,
+section {
+    display: block;
+}
+
+h1 {
+    font-size: 2em;
+    margin: 0.67em 0;
+}
+
+figcaption,
+figure,
+main {
+    display: block;
+}
+
+figure {
+    margin: 1em 40px;
+}
+
+hr {
+    box-sizing: content-box;
+    height: 0;
+}
+
+code,
+kbd,
+pre,
+samp {
+    font-family: monospace, monospace;
+    font-size: 1em;
+}
+
+a {
+    background-color: transparent;
+    -webkit-text-decoration-skip: objects;
+}
+
+    a:active,
+    a:hover {
+        outline-width: 0;
+    }
+
+abbr[title] {
+    border-bottom: none;
+    text-decoration: underline;
+    text-decoration: underline dotted;
+}
+
+b,
+strong {
+    font-weight: bolder;
+}
+
+dfn {
+    font-style: italic;
+}
+
+mark {
+    background-color: #ff0;
+    color: #000;
+}
+
+small {
+    font-size: 80%;
+}
+
+sub,
+sup {
+    font-size: 75%;
+    line-height: 0;
+    position: relative;
+}
+
+sub {
+    bottom: -0.25em;
+}
+
+sup {
+    top: -0.5em;
+}
+
+audio:not([controls]) {
+    display: none;
+    height: 0;
+}
+
+img {
+    border-style: none;
+}
+
+svg:not(:root) {
+    overflow: hidden;
+}
+
+button,
+input,
+optgroup,
+select,
+textarea {
+    font-family: sans-serif;
+    font-size: 100%;
+    line-height: 1.15;
+    margin: 0;
+}
+
+button,
+input {
+}
+
+button,
+select {
+    text-transform: none;
+}
+
+[type="submit"],
+[type="reset"],
+button,
+html [type="button"] {
+    -webkit-appearance: button;
+}
+
+    [type="button"]::-moz-focus-inner,
+    [type="reset"]::-moz-focus-inner,
+    [type="submit"]::-moz-focus-inner,
+    button::-moz-focus-inner {
+        border-style: none;
+        padding: 0;
+    }
+
+    [type="button"]:-moz-focusring,
+    [type="reset"]:-moz-focusring,
+    [type="submit"]:-moz-focusring,
+    button:-moz-focusring {
+        outline: ButtonText dotted 1px;
+    }
+
+fieldset {
+    border: 1px solid silver;
+    margin: 0 2px;
+    padding: 0.35em 0.625em 0.75em;
+}
+
+legend {
+    box-sizing: border-box;
+    color: inherit;
+    display: table;
+    max-width: 100%;
+    padding: 0;
+    white-space: normal;
+}
+
+progress {
+}
+
+textarea {
+    overflow: auto;
+}
+
+[type="checkbox"],
+[type="radio"] {
+    box-sizing: border-box;
+    padding: 0;
+}
+
+[type="number"]::-webkit-inner-spin-button,
+[type="number"]::-webkit-outer-spin-button {
+    height: auto;
+}
+
+[type="search"] {
+    -webkit-appearance: textfield;
+    outline-offset: -2px;
+}
+
+    [type="search"]::-webkit-search-cancel-button,
+    [type="search"]::-webkit-search-decoration {
+        -webkit-appearance: none;
+    }
+
+::-webkit-file-upload-button {
+    -webkit-appearance: button;
+    font: inherit;
+}
+
+summary {
+    display: list-item;
+}
+
+[hidden],
+template {
+    display: none;
+}

@@ -1,4 +1,7 @@
-﻿
-<h1>
-    Hello @ViewBag.UserName , Ban da dang nhap thanh cong
-</h1>
+﻿@{
+    Layout = "~/Views/Shared/_LayoutHome.cshtml";
+}
+
+<p class="lead">
+    <a href="@Url.Action("", "register")" class="btn btn-lg btn-secondary">Take it now</a>
+</p>

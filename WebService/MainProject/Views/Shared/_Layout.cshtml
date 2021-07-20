@@ -1,4 +1,5 @@
 ﻿@{
+    ViewBag.Content = "Touch the CoraCard tag on the phone to share information, reduce the time to exchange social networks such as Facebook, Instagram, Zalo, Phone, Email,...";
     MainProject.Common.UserLogin userLogin = (MainProject.Common.UserLogin)Session[MainProject.Common.CMConst.USER_SESSION];
 }
 <!DOCTYPE html>
@@ -7,8 +8,8 @@
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-    <meta name="description" content="" />
-    <meta name="author" content="" />
+    <meta name="description" content="@ViewBag.Desc" />
+    <link rel="icon" type="image/png" sizes="32x32" href="~/Upload/Image/Icon/default.png">
     <title>@ViewBag.Title - CoraCard</title>
     @Styles.Render("~/Css/style")
     @Scripts.Render("~/Js/fontawe")
@@ -16,7 +17,7 @@
 <body>
     <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
         <!-- Navbar Brand-->
-        <a class="navbar-brand ps-3" href="#">CoraCard</a>
+        <a class="navbar-brand ps-3" href="@Url.Action("", "", new { area = "" })">CoraCard</a>
         <!-- Sidebar Toggle-->
         <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i class="fas fa-bars"></i></button>
         <!-- Navbar Search-->
@@ -34,10 +35,13 @@
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item" href="@Url.Action("", "Socials", new { area = "Profile" })">Settings</a></li>
-                        <li><a class="dropdown-item" href="#!">Activity Log</a></li>
-                        <li><hr class="dropdown-divider" /></li>
-                        <li>@Html.ActionLink("Logout", "Logout", "Login", null, new { @class = "dropdown-item" })</li>
+                        <li><a class="dropdown-item" href="@Url.Action("", "Socials", new { area = "Profile" })">Social</a></li>
+                        <li><a class="dropdown-item" href="@Url.Action("", "Info", new { area = "Profile" })">Profile</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item" href="@Url.Action("changepassword", "info", new { area = "Profile" })">Change password</a></li>
+                        <li><a class="dropdown-item" href="#">Change email</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li>@Html.ActionLink("Logout", "Logout", "Login", new { area = "" }, new { @class = "dropdown-item" })</li>
                     </ul>
                 </li>
             </ul>
@@ -46,51 +50,28 @@
     <div id="layoutSidenav">
         <div id="layoutSidenav_nav">
             <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
-                @if (userLogin != null)
-                {
-                    <div class="sb-sidenav-menu">
-                        <div class="nav">
-                            <div class="sb-sidenav-menu-heading">Core</div>
-                            <a class="nav-link" href="#">
-                                <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
-                                Dashboard
+
+                <div class="sb-sidenav-menu">
+                    <div class="nav">
+                        <div class="sb-sidenav-menu-heading">Core</div>
+                        <a class="nav-link" href="@Url.Action("", "",  new { area = "" })">
+                            <div class="sb-nav-link-icon"><i class="fas fa-home"></i></div>
+                            Home
+                        </a>
+                        @if (userLogin != null)
+                        {
+                            <a class="nav-link" href="@Url.Action("", "manual", new { area = "" })">
+                                <div class="sb-nav-link-icon"><i class="fas fa-book"></i></div>
+                                User manual
                             </a>
-                            <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseUser" aria-expanded="false" aria-controls="collapseUser">
-                                <div class="sb-nav-link-icon"><i class="fas fa-user-alt"></i></div>
-                                User Management
-                                <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
-                            </a>
-                            <div class="collapse" id="collapseUser" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
-                                <nav class="sb-sidenav-menu-nested nav">
-                                    <a class="nav-link" href="#">Static Navigation</a>
-                                    <a class="nav-link" href="#">Light Sidenav</a>
-                                </nav>
-                            </div>
-                            <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseBlog" aria-expanded="false" aria-controls="collapseBlog">
-                                <div class="sb-nav-link-icon"><i class="fas fa-blog"></i></div>
-                                Blog Magagement
-                                <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
-                            </a>
-                            <div class="collapse" id="collapseBlog" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
-                                <nav class="sb-sidenav-menu-nested nav">
-                                    <a class="nav-link" href="#">Static Navigation</a>
-                                    <a class="nav-link" href="#">Light Sidenav</a>
-                                </nav>
-                            </div>
-                            <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseProfile" aria-expanded="false" aria-controls="collapseProfile">
-                                <div class="sb-nav-link-icon"><i class="fas fa-cog"></i></div>
-                                Profile Setting
-                                <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
-                            </a>
-                            <div class="collapse" id="collapseProfile" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
-                                <nav class="sb-sidenav-menu-nested nav">
-                                    <a class="nav-link" href="#">Static Navigation</a>
-                                    <a class="nav-link" href="#">Light Sidenav</a>
-                                </nav>
-                            </div>
-                        </div>
+                        }
+                        <a class="nav-link" href="@Url.Action("", "blogs", new { area = "" })">
+                            <div class="sb-nav-link-icon"><i class="fas fa-blog"></i></div>
+                            CoraCard Blog
+                        </a>
                     </div>
-                }
+                </div>
+
                 @if (userLogin != null)
                 {
                     <div class="sb-sidenav-footer">

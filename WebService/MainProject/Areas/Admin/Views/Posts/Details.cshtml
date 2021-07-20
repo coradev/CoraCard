@@ -1,0 +1,66 @@
+﻿@model EFDataAccess.EF.Post
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Post</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Category.NAME)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Category.NAME)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.User.USERNAME)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.User.USERNAME)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TITLE)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TITLE)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DESCRIPTION)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DESCRIPTION)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CONTENT)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CONTENT)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UPDATETIME)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UPDATETIME)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.POSTID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

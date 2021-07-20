@@ -1,0 +1,121 @@
+﻿@{
+    ViewBag.Content = "Touch the CoraCard tag on the phone to share information, reduce the time to exchange social networks such as Facebook, Instagram, Zalo, Phone, Email,...";
+    MainProject.Common.UserLogin userLogin = (MainProject.Common.UserLogin)Session[MainProject.Common.CMConst.USER_SESSION];
+}
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="@ViewBag.Desc">
+    <link rel="icon" type="image/png" sizes="32x32" href="~/Upload/Image/Icon/default.png">
+    <title>@ViewBag.Title - CoraCard</title>
+    <!-- Bootstrap core CSS -->
+    @Styles.Render("~/Css/style")
+    <!-- Custom styles for this template -->
+    @Styles.Render("~/Css/cover")
+</head>
+
+<body class="text-center">
+    <div class="cover-container d-flex h-100 p-3 mx-auto flex-column top-index">
+        <header class="masthead mb-auto">
+            <div class="inner">
+                <h3 class="masthead-brand">CoraCard</h3>
+                <nav class="nav nav-masthead justify-content-center ">
+
+                    @if (ViewBag.Title == "Free Profile Card")
+                    {
+                        <a class="nav-link active" href="@Url.Action("", "", new { area = "" })">Home</a>
+                    }
+                    else
+                    {
+                        <a class="nav-link" href="@Url.Action("", "", new { area = "" })">Home</a>
+                    }
+                    @if (ViewBag.Title == "Blogs")
+                    {
+
+                        <a class="nav-link active" href="@Url.Action("", "blogs", new { area = "" })">Blog</a>
+                    }
+                    else
+                    {
+                        <a class="nav-link" href="@Url.Action("", "blogs", new { area = "" })">Blog</a>
+                    }
+                    @if (ViewBag.Title == "Contact")
+                    {
+                        <a class="nav-link active" href="@Url.Action("", "contact", new { area = "" })">Contact</a>
+                    }
+                    else
+                    {
+                        <a class="nav-link" href="@Url.Action("", "contact", new { area = "" })">Contact</a>
+                    }
+                    <a class="nav-link" target="_blank" href="@Url.Action("", "card", new { area = "" })">View Card</a>
+                    @if (userLogin == null)
+                    {
+                        if (ViewBag.Title == "Login")
+                        {
+                            <a class="nav-link active" href="@Url.Action("", "login", new { area = "" })">Login</a>
+                        }
+                        else
+                        {
+                            <a class="nav-link" href="@Url.Action("", "login", new { area = "" })">Login</a>
+                        }
+                        if (ViewBag.Title == "Register")
+                        {
+                            <a class="nav-link active" href="@Url.Action("", "register", new { area = "" })">Register</a>
+                        }
+                        else
+                        {
+                            <a class="nav-link" href="@Url.Action("", "register", new { area = "" })">Register</a>
+                        }
+                    }
+                    @if (userLogin != null)
+                    {
+                        <div class="dropdown" style="margin-left: 2rem;">
+                            <a href="#" class="d-block link-dark text-decoration-none dropdown-toggle text-white" id="dropdownUser2" data-bs-toggle="dropdown" aria-expanded="false" style="font-weight: 800;">
+                                <img src="~/Upload/Image/Avatar/@userLogin.Avatar" alt="mdo" width="40" height="40" class="rounded-circle" style="margin-right: .7rem;">@userLogin.UserName
+                            </a>
+                            <ul class="dropdown-menu text-small shadow" aria-labelledby="dropdownUser2">
+                                <li><a class="dropdown-item" href="@Url.Action("", "socials", new { area = "Profile" })">Social</a></li>
+                                <li><a class="dropdown-item" href="@Url.Action("", "info", new { area = "Profile" })">Profile</a></li>
+                                <li><hr class="dropdown-divider"></li>
+                                <li><a class="dropdown-item" href="@Url.Action("changepassword", "info", new { area = "Profile" })">Change password</a></li>
+                                <li><a class="dropdown-item" href="#">Change email</a></li>
+                                <li><hr class="dropdown-divider"></li>
+                                <li><a class="dropdown-item" href="@Url.Action("Logout", "Login", new { area = "" })">Sign out</a></li>
+                            </ul>
+                        </div>
+                    }
+                </nav>
+            </div>
+        </header>
+
+        <main role="main" class="inner cover">
+            <h1 class="cover-heading">Smart Card For Business</h1>
+            <p class="lead">
+                @ViewBag.Content
+            </p>
+            @RenderBody()
+        </main>
+
+        <footer class="mastfoot mt-auto">
+            <div class="inner">
+                <p>&copy;2021 CoraCard. All rights reserved. Create with love by FU TruongDz</p>
+            </div>
+        </footer>
+    </div>
+    <div class="ball"></div>
+    <ul class="circles">
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
+    <script src="~/Assets/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

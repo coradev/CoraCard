@@ -9,11 +9,11 @@ namespace MainProject.Models
     public class LoginModel
     {
         [Required(ErrorMessage = "Enter username")]
-        public string UserName { set; get; }
+        public string UserName { get; set; }
 
         [Required(ErrorMessage = "Enter password")]
-        public string Password { set; get; }
-        
-        public bool RememberMe { set; get;  }
+        public string Password { get; set; }
+
+        public bool RememberMe { get; set; }
     }
 }

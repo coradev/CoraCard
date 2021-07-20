@@ -77,13 +77,50 @@ namespace MainProject.Areas.Profile.Controllers
         // GET: Profile/Info
         public ActionResult ChangePassword()
         {
+            var user = (Common.UserLogin)Session[Common.CMConst.USER_SESSION];
+            if (user == null)
+            {
+                return RedirectToAction("Index", "Login", new { area = "" });
+            }
+            var Message = TempData["Message"];
+            ViewBag.Message = Message;
             return View();
         }
 
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult ChangePassword(User user)
+        public ActionResult ChangePassword(ChangePasswordModel model)
         {
+            var user = (Common.UserLogin)Session[Common.CMConst.USER_SESSION];
+            if (user == null)
+            {
+                return RedirectToAction("Index", "Login", new { area = "" });
+            }
+            else
+            {
+                if (ModelState.IsValid)
+                {
+                    var dao = new UserDAO();
+                    var userlogged = dao.GetUserByUserName(user.UserName);
+                    if (userlogged.PASSWORD != model.OldPassword)
+                    {
+                        ModelState.AddModelError("", "Incorrect old password!");
+                    }
+                    else
+                    {
+                        if (userlogged.PASSWORD == model.NewPassword)
+                        {
+                            ModelState.AddModelError("", "Same old password!");
+                        }
+                        else
+                        {
+                            userlogged.PASSWORD = model.NewPassword;
+                            dao.ChangePassword(userlogged);
+                            TempData["Message"] = "Password has been changed!";
+                            return RedirectToAction("ChangePassword", "Info", new { area = "Profile" });
+                        }                        
+                    }
+                }
+            }
             return View();
         }
     }

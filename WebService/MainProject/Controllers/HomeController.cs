@@ -7,12 +7,13 @@ using System.Web.Mvc;
 
 namespace MainProject.Controllers
 {
-    public class HomeController : RequireLoginController
+    public class HomeController : Controller
     {
         // GET: Home
         public ActionResult Index()
         {
-            ViewBag.Title = "Home";
+            ViewBag.Title = "Free Profile Card";
+            ViewBag.Desc = "Touch the CoraCard tag on the phone to share information, reduce the time to exchange social networks such as Facebook, Instagram, Zalo, Phone, Email,...";
             return View();
         }
     }

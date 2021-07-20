@@ -1,0 +1,25 @@
+﻿@model MainProject.Models.EmailModel
+
+@{
+    ViewBag.Title = "Recover Password";
+    Layout = "~/Views/Shared/_LayoutHome.cshtml";
+}
+
+<style>
+    .validation-summary-errors ul{
+        list-style: none;
+        font-weight: bold;
+        font-size: 2rem;
+    }
+</style>
+@using (Html.BeginForm("SendMail", "Losspass", FormMethod.Post))
+{
+    @Html.ValidationSummary(false, "", new { @class = "text-danger" })
+    <div class="form-floating mb-3">
+        @Html.TextBoxFor(model => model.MailTo, new { @class = "form-control bg-dark text-white", @id = "email", @placeholder = "Email", @type = "email" })
+        <label for="email">Email</label>
+    </div>
+    <p class="lead">
+        <button class="btn btn-lg btn-secondary" type="submit">Send password to email</button>
+    </p>
+}

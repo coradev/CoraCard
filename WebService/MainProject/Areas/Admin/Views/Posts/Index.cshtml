@@ -1,0 +1,63 @@
+﻿@model IEnumerable<EFDataAccess.EF.Post>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Category.NAME)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.User.USERNAME)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TITLE)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DESCRIPTION)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CONTENT)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UPDATETIME)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Category.NAME)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.User.USERNAME)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TITLE)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DESCRIPTION)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CONTENT)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.UPDATETIME)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.POSTID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.POSTID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.POSTID })
+        </td>
+    </tr>
+}
+
+</table>

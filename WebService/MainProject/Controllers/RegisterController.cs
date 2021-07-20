@@ -1,5 +1,6 @@
 ﻿using EFDataAccess.DAL;
 using EFDataAccess.EF;
+using MainProject.Common;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,6 +14,11 @@ namespace MainProject.Controllers
         // GET: Register
         public ActionResult Index()
         {
+            var user = (UserLogin)Session[CMConst.USER_SESSION];
+            if (user != null)
+            {
+                return RedirectToAction("", "Home", new { area = "" });
+            }
             ViewBag.Title = "Register";
             return View();
         }

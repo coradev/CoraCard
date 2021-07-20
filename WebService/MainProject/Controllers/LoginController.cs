@@ -14,9 +14,15 @@ namespace MainProject.Controllers
         // GET: Login
         public ActionResult Index()
         {
+            var user = (UserLogin)Session[CMConst.USER_SESSION];
+            if (user != null)
+            {
+                return RedirectToAction("", "Home", new { area = "" });
+            }
+
             var Message = TempData["Message"];
-            ViewBag.Title = "Login";
             ViewBag.Message = Message;
+            ViewBag.Title = "Login";
             return View();
         }
 
@@ -26,7 +32,7 @@ namespace MainProject.Controllers
             {
                 var dao = new UserDAO();
                 var result = dao.Login(model.UserName, model.Password);
-                if(result == 1)
+                if (result == 1)
                 {
                     // correct username and password
                     var user = dao.GetUserByUserName(model.UserName);
@@ -35,6 +41,8 @@ namespace MainProject.Controllers
                     userSession.UserId = user.USERID;
                     userSession.UserName = user.USERNAME;
                     userSession.RoleId = user.Roles.Select(r => r.ROLEID).FirstOrDefault();
+                    userSession.Avatar = user.AVATAR;
+                    userSession.FullName = user.FULLNAME;
                     // create new session for user login
                     Session[CMConst.USER_SESSION] = userSession;
                     return RedirectToAction("Index", "Home");
