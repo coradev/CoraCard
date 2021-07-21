@@ -5,13 +5,6 @@
     Layout = "~/Views/Shared/_LayoutHome.cshtml";
 }
 
-<style>
-    .validation-summary-errors ul{
-        list-style: none;
-        font-weight: bold;
-        font-size: 2rem;
-    }
-</style>
 @using (Html.BeginForm("SendMail", "Losspass", FormMethod.Post))
 {
     @Html.ValidationSummary(false, "", new { @class = "text-danger" })

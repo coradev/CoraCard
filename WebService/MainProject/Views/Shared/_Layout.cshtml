@@ -9,7 +9,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <meta name="description" content="@ViewBag.Desc" />
-    <link rel="icon" type="image/png" sizes="32x32" href="~/Upload/Image/Icon/default.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="~/Upload/Image/Icon/DemoIcon/default.png">
     <title>@ViewBag.Title - CoraCard</title>
     @Styles.Render("~/Css/style")
     @Scripts.Render("~/Js/fontawe")
@@ -58,17 +58,35 @@
                             <div class="sb-nav-link-icon"><i class="fas fa-home"></i></div>
                             Home
                         </a>
-                        @if (userLogin != null)
-                        {
-                            <a class="nav-link" href="@Url.Action("", "manual", new { area = "" })">
-                                <div class="sb-nav-link-icon"><i class="fas fa-book"></i></div>
-                                User manual
-                            </a>
-                        }
+                        <a class="nav-link" href="@Url.Action("", "manual", new { area = "" })">
+                            <div class="sb-nav-link-icon"><i class="fas fa-book"></i></div>
+                            User manual
+                        </a>
                         <a class="nav-link" href="@Url.Action("", "blogs", new { area = "" })">
                             <div class="sb-nav-link-icon"><i class="fas fa-blog"></i></div>
                             CoraCard Blog
                         </a>
+                        <div class="sb-sidenav-menu-heading">User Setting</div>
+                        @if (userLogin != null)
+                        {
+                            <a class="nav-link" href="@Url.Action("", "Info", new { area = "Profile" })">
+                                <div class="sb-nav-link-icon"><i class="fas fa-info-circle"></i></div>
+                                Information
+                            </a>
+                            <a class="nav-link" href="@Url.Action("", "Socials", new { area = "Profile" })">
+                                <div class="sb-nav-link-icon"><i class="fas fa-cogs"></i></div>
+                                Social Manager
+                            </a>
+                            <a class="nav-link" href="@Url.Action("", "Contact", new { area = "Profile" })">
+                                <div class="sb-nav-link-icon"><i class="fas fa-user-cog"></i></div>
+                                Phone Contact
+                            </a>
+                            <div class="sb-sidenav-menu-heading">Card Setting</div>
+                            <a class="nav-link" target="_blank" href="@Url.Action("", "card", new { area = "" })">
+                                <div class="sb-nav-link-icon"><i class="fas fa-qrcode"></i></div>
+                                View Card
+                            </a>
+                        }
                     </div>
                 </div>
 

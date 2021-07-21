@@ -92,13 +92,13 @@ table {
 }
 
 .info-detail__name {
-    word-break: break-all;
+    word-break: break-word;
     font-size: 1.875rem;
     font-weight: 700;
 }
 
 .info-detail__description {
-    word-break: break-all;
+    word-break: break-word;
 }
 
 .info-detail__addcontact .button,button {

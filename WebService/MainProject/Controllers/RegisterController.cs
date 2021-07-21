@@ -52,19 +52,20 @@ namespace MainProject.Controllers
                 Social social = new Social();
                 social.NAME = "Email address";
                 social.LINK = "mailto:" + user.EMAIL;
-                social.IMAGE = "gmail.png";
+                social.IMAGE = "DemoIcon/gmail.png";
                 var sid1 = sdao.AddSocial(social);
                 DataAccessLayer.SocialDAO.AddUserSocial(uid, sid1);
 
                 social.NAME = "Website";
                 social.LINK = "https://kotzava.com";
-                social.IMAGE = "earth-globe.png";
+                social.IMAGE = "DemoIcon/earth-globe.png";
                 var sid2 = sdao.AddSocial(social);
                 DataAccessLayer.SocialDAO.AddUserSocial(uid, sid2);
 
                 TempData["Message"] = "Register successfully !";
+                return RedirectToAction("Index", "Login");
             }
-            return RedirectToAction("Index", "Login");
+            return View();
         }
     }
 }

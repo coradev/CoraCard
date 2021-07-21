@@ -15,7 +15,7 @@ namespace MainProject.Controllers
         {
             var dao = new UserDAO();
 
-            if(UserName == null)
+            if (UserName == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
@@ -24,9 +24,18 @@ namespace MainProject.Controllers
             // Redirect if user not found
             if (user == null)
             {
-                return HttpNotFound();
+                return RedirectToAction("Error404", "Error", new { area = "" });
             }
-            return View(user);
+
+            // 1 is active, 2 watting, 3 banned
+            if (user.Status.STATUSID == 1)
+            {
+                return View(user);
+            }
+            else
+            {
+                return RedirectToAction("Error403", "Error", new { area = "" });
+            }
         }
     }
 }
