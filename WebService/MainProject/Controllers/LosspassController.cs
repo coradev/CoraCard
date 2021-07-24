@@ -1,4 +1,5 @@
 ﻿using EFDataAccess.DAL;
+using MainProject.Common;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -14,6 +15,11 @@ namespace MainProject.Controllers
         // GET: Losspass
         public ActionResult Index()
         {
+            var user = (UserLogin)Session[CMConst.USER_SESSION];
+            if (user != null)
+            {
+                return RedirectToAction("", "Home", new { area = "" });
+            }
             return View();
         }
 

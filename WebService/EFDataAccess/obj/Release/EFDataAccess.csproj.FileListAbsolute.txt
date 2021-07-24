@@ -1,0 +1,12 @@
+C:\Users\admin\Desktop\CoraCard\WebService\EFDataAccess\bin\Release\EFDataAccess.dll.config
+C:\Users\admin\Desktop\CoraCard\WebService\EFDataAccess\bin\Release\EFDataAccess.dll
+C:\Users\admin\Desktop\CoraCard\WebService\EFDataAccess\bin\Release\EFDataAccess.pdb
+C:\Users\admin\Desktop\CoraCard\WebService\EFDataAccess\bin\Release\EntityFramework.dll
+C:\Users\admin\Desktop\CoraCard\WebService\EFDataAccess\bin\Release\EntityFramework.SqlServer.dll
+C:\Users\admin\Desktop\CoraCard\WebService\EFDataAccess\bin\Release\EntityFramework.xml
+C:\Users\admin\Desktop\CoraCard\WebService\EFDataAccess\bin\Release\EntityFramework.SqlServer.xml
+C:\Users\admin\Desktop\CoraCard\WebService\EFDataAccess\obj\Release\EFDataAccess.csproj.AssemblyReference.cache
+C:\Users\admin\Desktop\CoraCard\WebService\EFDataAccess\obj\Release\EFDataAccess.csproj.CoreCompileInputs.cache
+C:\Users\admin\Desktop\CoraCard\WebService\EFDataAccess\obj\Release\EFDataAccess.csproj.CopyComplete
+C:\Users\admin\Desktop\CoraCard\WebService\EFDataAccess\obj\Release\EFDataAccess.dll
+C:\Users\admin\Desktop\CoraCard\WebService\EFDataAccess\obj\Release\EFDataAccess.pdb

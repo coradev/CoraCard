@@ -16,7 +16,7 @@ namespace MainProject.Controllers
             if (session == null)
             {
                 filterContext.Result = new RedirectToRouteResult(
-                    new RouteValueDictionary(new { controller = "Login", action = "Index" })
+                    new RouteValueDictionary(new { controller = "Login", action = "", area="" })
                     );
             }
             else
@@ -24,7 +24,7 @@ namespace MainProject.Controllers
                 if (Convert.ToInt32(session.RoleId) != 1) // roleid = 1 is admin
                 {
                     filterContext.Result = new RedirectToRouteResult(
-                        new RouteValueDictionary(new { controller = "Error", action = "Error403" })
+                        new RouteValueDictionary(new { controller = "Error", action = "Error403", area = "" })
                         );
                 }
                 else

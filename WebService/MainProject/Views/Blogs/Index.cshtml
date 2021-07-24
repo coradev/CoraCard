@@ -1,0 +1,27 @@
+﻿@model IEnumerable<EFDataAccess.EF.Post>
+
+@{
+    ViewBag.Title = "Blogs";
+    ViewBag.Width = 350;
+    ViewBag.BLOGTITLE = "blog";
+}
+<div class="row container my-5">
+
+    @foreach (var item in Model)
+    {
+        <div class="col-md-4 d-flex align-items-stretch">
+            <div class="card mb-4 shadow-sm">
+                <img class="bd-placeholder-img card-img-top" height="250" src="https://picsum.photos/600/@ViewBag.Width" />
+                @{ 
+                    ViewBag.Width = ViewBag.Width + 1;
+                }
+                <div class="card-body">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <a href="@Url.Action("Detail", "Blogs", new { area = "", id = item.POSTID })" class="h4 text-decoration-none">@item.TITLE</a>
+                    </div>
+                    <p class="card-text">@item.DESCRIPTION</p>
+                </div>
+            </div>
+        </div>
+    }
+</div>

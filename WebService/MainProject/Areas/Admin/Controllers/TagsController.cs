@@ -7,10 +7,11 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using EFDataAccess.EF;
+using MainProject.Controllers;
 
 namespace MainProject.Areas.Admin.Controllers
 {
-    public class TagsController : Controller
+    public class TagsController : RequireAdminController
     {
         private CoraCardDBContext db = new CoraCardDBContext();
 
@@ -18,21 +19,6 @@ namespace MainProject.Areas.Admin.Controllers
         public ActionResult Index()
         {
             return View(db.Tags.ToList());
-        }
-
-        // GET: Admin/Tags/Details/5
-        public ActionResult Details(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Tag tag = db.Tags.Find(id);
-            if (tag == null)
-            {
-                return HttpNotFound();
-            }
-            return View(tag);
         }
 
         // GET: Admin/Tags/Create

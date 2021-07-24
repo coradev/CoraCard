@@ -1,0 +1,37 @@
+﻿@model MainProject.Models.LoginModel
+
+@{
+    Layout = "~/Views/Shared/_LayoutHome.cshtml";
+}
+
+@if (ViewBag.Message != null)
+{
+    <div class="alert alert-success alert-dismissible fade show mt-5" role="alert">
+        @ViewBag.Message
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+}
+
+@using (Html.BeginForm("Login", "Login", FormMethod.Post))
+{
+    @Html.ValidationSummary(false, "", new { @class = "text-danger" })
+
+    <div class="form-floating mb-3">
+        @Html.TextBoxFor(model => model.UserName, new { @class = "form-control bg-dark text-white", @id = "userName", @placeholder = "Your username" })
+        <label for="userName">Username</label>
+    </div>
+    <div class="form-floating mb-3">
+        @Html.TextBoxFor(model => model.Password, new { @class = "form-control bg-dark text-white", @id = "inputPassword", @placeholder = "Password", @type = "password" })
+        <label for="inputPassword">Password</label>
+    </div>
+    <div class="form-check mb-3">
+        @Html.TextBoxFor(model => model.RememberMe, new { @class = "form-check-input", @id = "inputRememberPassword", @type = "checkbox" })
+        <label class="form-check-label" for="inputRememberPassword">Remember Password</label>
+    </div>
+    <div class="d-flex align-items-center justify-content-around mt-4 mb-0">
+        <p class="lead">
+            <a href="@Url.Action("", "Losspass", new { area = "" })" class="btn btn-lg btn-secondary">Forget password?</a>
+            <button class="btn btn-lg btn-secondary" type="submit">Login now</button>
+        </p>
+    </div>
+}

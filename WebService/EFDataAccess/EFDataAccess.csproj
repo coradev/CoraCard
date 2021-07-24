@@ -70,7 +70,6 @@
     <Compile Include="EF\User.cs" />
     <Compile Include="Models\ChangePasswordModel.cs" />
     <Compile Include="Models\EditProfileModel.cs" />
-    <Compile Include="Models\PostModel.cs" />
     <Compile Include="Models\SocialModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

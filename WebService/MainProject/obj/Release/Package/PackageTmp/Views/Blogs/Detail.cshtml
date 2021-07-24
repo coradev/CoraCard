@@ -1,0 +1,43 @@
+﻿@model EFDataAccess.EF.Post
+
+@{
+    ViewBag.Title = Model.TITLE;
+    ViewBag.Width = 300;
+    ViewBag.BLOGTITLE = "blog";
+}
+
+<style>
+    #layoutSidenav_content {
+        background-color: #f8f9fa !important;
+    }
+</style>
+<div class="">
+    <div class="m-5 row">
+        <div class="col-md-7 border border-danger pt-2 pb-5 me-3">
+            <h2 class="blog-post-title">@Html.DisplayFor(model => model.TITLE)</h2>
+            <p class="blog-post-meta text-danger">Last update: @Model.UPDATETIME.ToString("MM/dd/yyyy")</p>
+            <p>@Html.DisplayFor(model => model.DESCRIPTION)</p>
+            <hr>
+            @Html.Raw(Model.CONTENT)
+        </div>
+
+        <div class="col-md-4 border border-danger pt-2 pb-4">
+            <h2 class="text-center my-3">Other Post</h2>
+            <hr />
+
+            @foreach (var item in ViewBag.OTHERPOST as ICollection<EFDataAccess.EF.Post>)
+            {
+                <div class="card mb-4 shadow-sm">
+                    <img class="bd-placeholder-img card-img-top" height="150" src="https://picsum.photos/600/@ViewBag.Width" />
+                    @{ 
+                        ViewBag.Width = ViewBag.Width + 1;
+                    }
+                    <div class="card-body">
+                        <p class="card-text">@item.DESCRIPTION</p>
+                    <a href="@Url.Action("Detail", "Blogs", new { area = "", id = item.POSTID })" class="h5 text-decoration-none">@item.TITLE</a>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>

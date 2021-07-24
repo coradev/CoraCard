@@ -8,10 +8,12 @@ using System.Web;
 using System.Web.Mvc;
 using EFDataAccess.EF;
 using EFDataAccess.Models;
+using MainProject.Controllers;
+using MainProject.Models;
 
 namespace MainProject.Areas.Admin.Controllers
 {
-    public class PostsController : Controller
+    public class PostsController : RequireAdminController
     {
         private CoraCardDBContext db = new CoraCardDBContext();
 
@@ -22,26 +24,10 @@ namespace MainProject.Areas.Admin.Controllers
             return View(posts.ToList());
         }
 
-        // GET: Admin/Posts/Details/5
-        public ActionResult Details(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Post post = db.Posts.Find(id);
-            if (post == null)
-            {
-                return HttpNotFound();
-            }
-            return View(post);
-        }
-
         // GET: Admin/Posts/Create
         public ActionResult Create()
         {
             ViewBag.CATEGORYID = new SelectList(db.Categories, "CATEGORYID", "NAME");
-            ViewBag.USERID = new SelectList(db.Users, "USERID", "USERNAME");
             return View();
         }
 
@@ -50,18 +36,23 @@ namespace MainProject.Areas.Admin.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "POSTID,TITLE,DESCRIPTION,CONTENT,UPDATETIME,CATEGORYID,USERID")] Post post)
+        public ActionResult Create(PostModel model)
         {
             if (ModelState.IsValid)
             {
+                Post post = new Post();
+                post.TITLE = model.PostTitle;
+                post.DESCRIPTION = model.PostDesc;
+                post.CONTENT = model.PostContent;
+                post.UPDATETIME = DateTime.Now;
+                post.CATEGORYID = model.CategoryId;
+                post.USERID = db.Users.SingleOrDefault(x => x.USERNAME == "admin").USERID;
                 db.Posts.Add(post);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-
-            ViewBag.CATEGORYID = new SelectList(db.Categories, "CATEGORYID", "NAME", post.CATEGORYID);
-            ViewBag.USERID = new SelectList(db.Users, "USERID", "USERNAME", post.USERID);
-            return View(post);
+            ViewBag.CATEGORYID = new SelectList(db.Categories, "CATEGORYID", "NAME", model.CategoryId);
+            return View(model);
         }
 
         // GET: Admin/Posts/Edit/5
@@ -76,9 +67,15 @@ namespace MainProject.Areas.Admin.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.CATEGORYID = new SelectList(db.Categories, "CATEGORYID", "NAME", post.CATEGORYID);
-            ViewBag.USERID = new SelectList(db.Users, "USERID", "USERNAME", post.USERID);
-            return View(post);
+            PostModel entity = new PostModel();
+            entity.PostId = post.POSTID;
+            entity.PostTitle = post.TITLE;
+            entity.PostContent = post.CONTENT;
+            entity.PostDesc = post.DESCRIPTION;
+            entity.CategoryId = post.CATEGORYID;
+
+            ViewBag.CATEGORYID = new SelectList(db.Categories, "CATEGORYID", "NAME", entity.CategoryId);
+            return View(entity);
         }
 
         // POST: Admin/Posts/Edit/5
@@ -86,17 +83,22 @@ namespace MainProject.Areas.Admin.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "POSTID,TITLE,DESCRIPTION,CONTENT,UPDATETIME,CATEGORYID,USERID")] Post post)
+        public ActionResult Edit(PostModel model)
         {
             if (ModelState.IsValid)
             {
+                Post post = db.Posts.Find(model.PostId);
+                post.TITLE = model.PostTitle;
+                post.DESCRIPTION = model.PostDesc;
+                post.CONTENT = model.PostContent;
+                post.UPDATETIME = DateTime.Now;
+                post.CATEGORYID = model.CategoryId;
                 db.Entry(post).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.CATEGORYID = new SelectList(db.Categories, "CATEGORYID", "NAME", post.CATEGORYID);
-            ViewBag.USERID = new SelectList(db.Users, "USERID", "USERNAME", post.USERID);
-            return View(post);
+            ViewBag.CATEGORYID = new SelectList(db.Categories, "CATEGORYID", "NAME", model.CategoryId);
+            return View(model);
         }
 
         // GET: Admin/Posts/Delete/5
@@ -132,20 +134,6 @@ namespace MainProject.Areas.Admin.Controllers
                 db.Dispose();
             }
             base.Dispose(disposing);
-        }
-
-
-        public ActionResult AddPost()
-        {
-
-            return View();
-        }
-
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult AddPost(PostModel postModel)
-        {
-            return View(postModel);
         }
     }
 }

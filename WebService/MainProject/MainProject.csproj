@@ -140,6 +140,7 @@
     <Compile Include="Common\CMConst.cs" />
     <Compile Include="Common\NameNotAllow.cs" />
     <Compile Include="Common\UserLogin.cs" />
+    <Compile Include="Controllers\BlogsController.cs" />
     <Compile Include="Controllers\CardController.cs" />
     <Compile Include="Controllers\ErrorController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -154,6 +155,7 @@
     </Compile>
     <Compile Include="Models\EmailModel.cs" />
     <Compile Include="Models\LoginModel.cs" />
+    <Compile Include="Models\PostModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -189,8 +191,6 @@
     <Content Include="Areas\Admin\Views\web.config" />
     <Content Include="Areas\Admin\Views\_ViewStart.cshtml" />
     <Content Include="Areas\Admin\Views\Users\Create.cshtml" />
-    <Content Include="Areas\Admin\Views\Users\Delete.cshtml" />
-    <Content Include="Areas\Admin\Views\Users\Details.cshtml" />
     <Content Include="Areas\Admin\Views\Users\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\Users\Index.cshtml" />
     <Content Include="Areas\Profile\Views\web.config" />
@@ -203,17 +203,14 @@
     <Content Include="Areas\Admin\Views\Shared\_Layout.cshtml" />
     <Content Include="Areas\Admin\Views\Posts\Create.cshtml" />
     <Content Include="Areas\Admin\Views\Posts\Delete.cshtml" />
-    <Content Include="Areas\Admin\Views\Posts\Details.cshtml" />
     <Content Include="Areas\Admin\Views\Posts\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\Posts\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Tags\Create.cshtml" />
     <Content Include="Areas\Admin\Views\Tags\Delete.cshtml" />
-    <Content Include="Areas\Admin\Views\Tags\Details.cshtml" />
     <Content Include="Areas\Admin\Views\Tags\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\Tags\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Categories\Create.cshtml" />
     <Content Include="Areas\Admin\Views\Categories\Delete.cshtml" />
-    <Content Include="Areas\Admin\Views\Categories\Details.cshtml" />
     <Content Include="Areas\Admin\Views\Categories\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\Categories\Index.cshtml" />
     <Content Include="Areas\Profile\Views\Info\ChangePassword.cshtml" />
@@ -295,10 +292,15 @@
     <Content Include="Views\Shared\_LayoutHome.cshtml" />
     <Content Include="Views\Losspass\Index.cshtml" />
     <Content Include="Views\Card\Index.cshtml" />
+    <Content Include="Views\Blogs\Index.cshtml" />
+    <Content Include="Views\Blogs\Detail.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Upload\Image\Avatar\UserAvatar\" />
+    <Folder Include="Upload\Image\Blog\Cover\" />
+    <Folder Include="Upload\Image\Blog\Post\" />
     <Folder Include="Upload\Image\Icon\UserIcon\" />
+    <Folder Include="Upload\VCard\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

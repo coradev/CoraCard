@@ -16,11 +16,19 @@ namespace EFDataAccess.DAL
             db = new CoraCardDBContext();
         }
 
-        public int AddPost(Post entity)
+        public List<Post> GetAllPost()
         {
-            db.Posts.Add(entity);
-            db.SaveChanges();
-            return entity.POSTID;
+            return db.Posts.ToList();
+        }
+
+        public Post GetPostById(int? id)
+        {
+            return db.Posts.Find(id);
+        }
+
+        public List<Post> GetPostExcludeById(int? id, int number)
+        {
+            return db.Posts.Where(x=> x.POSTID != id).Take(number).ToList();
         }
 
 

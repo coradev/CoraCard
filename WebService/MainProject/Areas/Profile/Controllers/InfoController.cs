@@ -54,8 +54,8 @@ namespace MainProject.Areas.Profile.Controllers
                         string fileName = Path.GetFileNameWithoutExtension(entity.ImageFile.FileName);
                         string extension = Path.GetExtension(entity.ImageFile.FileName);
                         fileName = user.UserName + fileName + DateTime.Now.ToString("yymmssfff") + extension;
-                        entity.UserAvatar = fileName;
-                        fileName = Path.Combine(Server.MapPath("~/Upload/Image/Avatar/"), fileName);
+                        entity.UserAvatar = "UserAvatar/" + fileName;
+                        fileName = Path.Combine(Server.MapPath("~/Upload/Image/Avatar/UserAvatar/"), fileName);
                         entity.ImageFile.SaveAs(fileName);
                     }
                     else
@@ -74,7 +74,6 @@ namespace MainProject.Areas.Profile.Controllers
             }
         }
 
-        // GET: Profile/Info
         public ActionResult ChangePassword()
         {
             var user = (Common.UserLogin)Session[Common.CMConst.USER_SESSION];
@@ -107,7 +106,10 @@ namespace MainProject.Areas.Profile.Controllers
                     }
                     else
                     {
-                        if (userlogged.PASSWORD == model.NewPassword)
+                        if (model.NewPassword == null || model.NewPassword.Trim().Length < 1)
+                        {
+                            ModelState.AddModelError("", "New password error!");
+                        }else if (userlogged.PASSWORD == model.NewPassword)
                         {
                             ModelState.AddModelError("", "Same old password!");
                         }

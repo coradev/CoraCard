@@ -81,8 +81,8 @@ namespace MainProject.Areas.Profile.Controllers
                         string fileName = Path.GetFileNameWithoutExtension(entity.ImageFile.FileName);
                         string extension = Path.GetExtension(entity.ImageFile.FileName);
                         fileName = fileName + DateTime.Now.ToString("yymmssfff") + extension;
-                        entity.SocialImage = fileName;
-                        fileName = Path.Combine(Server.MapPath("~/Upload/Image/Icon/"), fileName);
+                        entity.SocialImage = "UserIcon/" + fileName;
+                        fileName = Path.Combine(Server.MapPath("~/Upload/Image/Icon/UserIcon/"), fileName);
                         entity.ImageFile.SaveAs(fileName);
                     }
                     else
@@ -158,8 +158,8 @@ namespace MainProject.Areas.Profile.Controllers
                         string fileName = Path.GetFileNameWithoutExtension(social.ImageFile.FileName);
                         string extension = Path.GetExtension(social.ImageFile.FileName);
                         fileName = fileName + DateTime.Now.ToString("yymmssfff") + extension;
-                        social.IMAGE = fileName;
-                        fileName = Path.Combine(Server.MapPath("~/Upload/Image/Icon/"), fileName);
+                        social.IMAGE = "UserIcon/" + fileName;
+                        fileName = Path.Combine(Server.MapPath("~/Upload/Image/Icon/UserIcon/"), fileName);
                         social.ImageFile.SaveAs(fileName);
                     }
                     else

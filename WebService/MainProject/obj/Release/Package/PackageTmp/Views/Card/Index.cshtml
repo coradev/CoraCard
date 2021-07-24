@@ -1,0 +1,65 @@
+﻿@{
+    Layout = null;
+    MainProject.Common.UserLogin userLogin = (MainProject.Common.UserLogin)Session[MainProject.Common.CMConst.USER_SESSION];
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" type="image/png" sizes="32x32" href="~/Upload/Image/Icon/DemoIcon/default.png">
+    <title>@ViewBag.Title</title>
+    @Styles.Render("~/Css/card")
+</head>
+
+<body>
+    <div class="download-button">
+        <a href="@Url.Action("", "Home", new { area = "" })" class="disabled homebtn"> HOME</a>
+        <a href="#" class="download-png disabled"> DOWNLOAD PNG</a>
+        <a href="#" class="download-svg disabled"> DOWNLOAD SVG</a>
+    </div>
+    <!-- partial:index.partial.html -->
+    <div class="exportable-container">
+        <div class="container" id="exportable">
+            <div class="brand">
+                Smart Card For Business
+            </div>
+            @if (userLogin != null)
+            {
+                <div class="name">@userLogin.FullName</div>
+            }
+            else
+            {
+                <div class="name">Quang Truong</div>
+            }
+            <div class="subtitle">The member of Cora Card.</div>
+            <div class="phone">☏ Phone: <span class="phone-num">0987654321</span></div>
+            <div class="email">✉ Email: <span class="email-text">youremail@gmail.com</span></div>
+            <div class="whitepaper">
+                @if (userLogin != null)
+                {
+                    <img src="https://chart.googleapis.com/chart?chs=524x525&cht=qr&choe=UTF-8&chl=@ViewBag.RootUrl/user/@userLogin.UserName" class="qr-code">
+                }
+                else
+                {
+                    <img src="https://chart.googleapis.com/chart?chs=524x525&cht=qr&choe=UTF-8&chl=@ViewBag.RootUrl/user/admin" class="qr-code">
+                }
+            </div>
+            <div class="call-to-action">
+                &copy; 2021 CoraCard. Allright reserved.
+            </div>
+        </div>
+    </div>
+    <div class="editor">
+        <input type="text" data-for=".name" name="name" id="name" maxlength="35" placeholder="Cora Card" />
+        <input type="text" data-for=".subtitle" name="subtitle" id="subtitle" maxlength="60" placeholder="Description" />
+        <input type="text" data-for=".phone-num" name="phone-num" id="phone" maxlength="60" placeholder="Phone" />
+        <input type="text" data-for=".email-text" name="email-text" id="email" maxlength="60" placeholder="Email" />
+        <input type="text" data-for=".call-to-action" name="cta" id="cta" maxlength="55"
+               placeholder="&copy; 2021 CoraCard." />
+    </div>
+    <!-- partial -->
+    <script src='https://code.jquery.com/jquery-2.2.4.min.js'></script>
+    @Scripts.Render("~/Js/card")
+</body>
+</html>

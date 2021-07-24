@@ -7,10 +7,11 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using EFDataAccess.EF;
+using MainProject.Controllers;
 
 namespace MainProject.Areas.Admin.Controllers
 {
-    public class CategoriesController : Controller
+    public class CategoriesController : RequireAdminController
     {
         private CoraCardDBContext db = new CoraCardDBContext();
 
